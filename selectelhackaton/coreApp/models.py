@@ -39,6 +39,13 @@ class Order(models.Model):
 class Task(models.Model):
     """ Это задачи (компания) """
     
+    STATUS_LIST = [
+        ('WH', 'В ожидание'),
+        ('CH', 'На модерации'),
+        ('IP', 'В разработке'),
+        ('RD', 'Готово'),
+    ]
+
     title = models.CharField(max_length=100)
 
     created_date = models.DateTimeField(auto_now=True)
@@ -53,4 +60,8 @@ class Task(models.Model):
 
     author = models.ForeignKey(User, verbose_name=("Создатель"), on_delete=models.CASCADE)
 
-
+    status = models.CharField(
+        max_length = 2,
+        choices = STATUS_LIST,
+        default = 'WH',
+    )
