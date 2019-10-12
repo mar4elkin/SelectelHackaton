@@ -1,0 +1,16 @@
+{ 
+    "Django HTML: static js": {
+        "prefix": "sjs",
+        "body": [
+            "<script src=\"{% static 'js/${1:file_name}.js' %}\"></script>"  
+        ],
+        "description": "js file from static"
+    },
+    "Django HTML: static css": {
+        "prefix": "scss",
+        "body": [
+            "<link rel=\"stylesheet\" media=\"screen\" href=\"{% static 'css/${1:file_name}.css' %}\">"
+        ],
+        "description": "CSS file from static"
+    }
+}
