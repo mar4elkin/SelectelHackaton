@@ -67,7 +67,6 @@ class Task(models.Model):
     )
 
 class Squad(models.Model):
-
-    id = models.ForeignKey(verbose_name=("id"), on_delete=models.CASCADE)
+    
     description = models.TextField()
     team = models.ManyToManyField(User)

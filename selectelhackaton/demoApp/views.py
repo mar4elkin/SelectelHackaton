@@ -16,7 +16,6 @@ import                                     datetime
 @login_required
 # @csrf_protect # - for POST
 def order_ditail(request, pk):
-    order = get_object_or_404(Order, pk=pk)
 
     context= {
     }

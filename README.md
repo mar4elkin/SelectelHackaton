@@ -23,7 +23,7 @@ mark - lox
 
 2. Подготовка:
 
-        $ python manage.py makemigrations selectelhackaton_auth demoApp
+        $ python manage.py makemigrations selectelhackaton_auth demoApp coreApp
 
 3. Миграция:
 
