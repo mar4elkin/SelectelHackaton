@@ -64,6 +64,7 @@ INSTALLED_APPS = (
     # Projects App's
     'selectelhackaton.auth',
     'selectelhackaton.demoApp',
+    'selectelhackaton.coreApp',
 )
 
 MIDDLEWARE = [

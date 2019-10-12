@@ -11,19 +11,13 @@ from django.db.models               import Q
 #from django.contrib.postgres.search import SearchVector
 
 
-import                                     datetime
-
-from selectelhackaton.demoApp.models     import Order
-from selectelhackaton.demoApp.forms      import TagForm
+import                                     datetime   
 
 @login_required
 # @csrf_protect # - for POST
 def order_ditail(request, pk):
-    order = get_object_or_404(Order, pk=pk)
 
     context= {
-        'order': order,
-        'tag_form': TagForm()
     }
 
     if request.method == "POST":

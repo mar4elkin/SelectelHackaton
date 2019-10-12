@@ -62,6 +62,12 @@ class User(AbstractBaseUser, PermissionsMixin):
                                                 'active. Unselect this instead of deleting accounts.'))
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
 
+    is_entity = models.BooleanField(
+        _('Юридическое лицо'), 
+        default=False,
+        help_text=_("Является ли пользователь юридическим лицом.")
+    )
+
     objects = MyUserManager()
 
     USERNAME_FIELD = 'email'
@@ -99,8 +105,6 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def guess_display_name(self):
         """Set a display name, if one isn't already set."""
-        if self.display_name:
-            return
 
         if self.first_name and self.last_name:
             dn = "%s %s" % (self.first_name, self.last_name[0])  # like "Andrew E"

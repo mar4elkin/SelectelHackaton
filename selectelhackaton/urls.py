@@ -24,6 +24,9 @@ urlpatterns = [
     # demoApp
     path('demo/', include('selectelhackaton.demoApp.urls')), 
 
+    # demoApp
+    path('core/', include('selectelhackaton.coreApp.urls')), 
+
     # Usual Django admin
     path('admin/', admin.site.urls),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
