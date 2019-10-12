@@ -65,7 +65,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_entity = models.BooleanField(
         _('Юридическое лицо'), 
         default=False,
-        help=_("Является ли пользователь юридическим лицом.")
+        help_text=_("Является ли пользователь юридическим лицом.")
     )
 
     objects = MyUserManager()

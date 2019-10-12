@@ -63,7 +63,7 @@ class Task(models.Model):
     is_internal = models.BooleanField(
         _('Для внутреннего пользования'), 
         default=False,
-        help=_("Является ли задача для внутреннего пользования.")
+        help_text=_("Является ли задача для внутреннего пользования.")
     )
 
     status = models.CharField(
