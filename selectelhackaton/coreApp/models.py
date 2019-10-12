@@ -56,7 +56,7 @@ class Task(models.Model):
 
     tags = TaggableManager()
 
-    updated_data = models.DateTimeField(auto_now=True, auto_now_add=True)
+    updated_data = models.DateTimeField(auto_now_add=True)
 
     author = models.ForeignKey(User, verbose_name=("Создатель"), on_delete=models.CASCADE)
 
@@ -67,6 +67,6 @@ class Task(models.Model):
     )
 
 class Squad(models.Model):
-    
+
     description = models.TextField()
     team = models.ManyToManyField(User)
