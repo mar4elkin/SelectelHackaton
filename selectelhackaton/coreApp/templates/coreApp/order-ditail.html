@@ -1,0 +1,42 @@
+{% extends "bases/bootstrap-navbar.html" %}
+{% load bootstrap4 i18n staticfiles %}
+
+{% block title %}{% trans "Welcome" %}{% endblock %}
+
+{% block content %}
+
+    <h1>{{order}}</h1>
+
+    {{order.tags.all}}
+    <p></p>
+
+    {{tag_form.as_p}}
+
+    <button type="button" class="btn btn-secondary" onclick="sendFunction()">Allways YES</button>
+{% endblock %}
+
+
+
+{% block app_js %}
+<script src="{% static 'js/jquery.flexdatalist.min.js' %}"></script>
+{% include 'utils/csrf-token.html' %}
+<script>
+   function sendFunction(){
+       tags_data = $('.flexdatalist').flexdatalist('value'); // $('.flexdatalist').val(); 
+       $.post(
+           "",
+           {
+               "tags":tags_data
+           },
+           function(){
+               // Что-то
+           }
+       )
+   }
+</script>
+{% endblock app_js %}
+
+
+{% block head_css %}
+<link href="{% static 'css/jquery.flexdatalist.min.css' %}" rel="stylesheet" type="text/css">
+{% endblock head_css %}
