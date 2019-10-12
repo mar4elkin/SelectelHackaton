@@ -10,31 +10,6 @@ import uuid
 
 from selectelhackaton.auth.models import User
 
-class Order(models.Model):
-    """ Это заказ """
-
-    title = models.TextField()
-    
-    created_date = models.DateTimeField(auto_now=True)
-
-    discription = models.TextField()
-
-    deadline = models.DateTimeField(null=True, blank=True)
-
-    tags = TaggableManager()
-
-    # TODO: Define fields here
-
-    class Meta:
-        """Meta definition for Order."""
-
-        verbose_name = _('Заказ')
-        verbose_name_plural = _('Заказы')
-
-    def __str__(self):
-        """Unicode representation of Order."""
-        return self.title
-
 
 class Task(models.Model):
     """ Это задачи (компания) """
@@ -71,6 +46,16 @@ class Task(models.Model):
         choices = STATUS_LIST,
         default = 'WH',
     )
+
+    class Meta:
+        """Meta definition for Order."""
+
+        verbose_name = _('Заказ')
+        verbose_name_plural = _('Заказы')
+
+    def __str__(self):
+        """Unicode representation of Order."""
+        return self.title
 
 class Squad(models.Model):
     """ Это группы (компания) """
