@@ -10,25 +10,47 @@
 
 {% block content %}
   {% bootstrap_messages %}
-<div class="container">
+  <!---->
   <div class="row">
+  <div style="margin-top:40px;" class="container">
     <div class="col-lg-12">
       <div class="mainInformation">
-        <div class="row">
-          <div class="col-md-4">
-              {% if user.profile.avatar_url %}<img alt="" src="{{user.profile.avatar_url}}" style="width: 80px; height: 80px" class="userLogo">
-              {% else %}No picture available yet.{% endif %}
+          <div class="row">
+              <div class="col">
+                {% if user.profile.avatar_url %}<img alt="" src="{{user.profile.avatar_url}}" style="width: 80px; height: 80px;" class="userLogo">
+                {% else %}No picture available yet.{% endif %}
+              </div>
+            <div class="col"><span style="font-size: normal;" class="userName">{{user.display_name}}</span><br>
+                           {% if user.is_entity %}
+                <span class="userStatus">Статус: {{user.is_entity}}</span>
+              {% else %} <span style="" class="userStatus">Статус: Физ. лицо</span> {% endif %}
+            </div>
+            <div class="col"></div>
+            <div class="col"></div>
           </div>
-          <div class="col-md-6">
-              <span class="userName">{{user.display_name}}</span>
-              {% if user.is_entity %}
-                <span class="userStatus">{{user.is_entity}}</span>
-              {% else %} <span class="userStatus">Физ. лицо</span> {% endif %}
-          </div>
-        </div>
       </div>
     </div>
   </div>
+
+  <!--  -->
+  
+  <div style="margin-top:40px;" class="container">
+    <div class="col-lg-12">
+      <div class="mainInformation">
+          <div class="row">
+            <div class="col"><strong>Имя: {{user.first_name}}</strong></div>
+          </div>
+          <div class="row">
+            <div class="col"><strong>Фамилия: {{user.last_name}}</strong></div>
+          </div>
+          <div class="row">
+            <div class="col"><strong>Email: {{user.email}}</strong></div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+
   <!--
     <div class="col-sm-6 col-md-4 col-lg-4">
       <h3>{% trans "Profile" %}</h3>
