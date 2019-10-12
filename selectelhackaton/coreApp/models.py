@@ -15,11 +15,27 @@ from selectelhackaton.auth.models import User
 class Task(models.Model):
     """ Это задачи (компания) """
     
+    # массив статусов
     STATUS_LIST = [
         ('WH', 'В ожидание'),
         ('CH', 'На модерации'),
         ('IP', 'В разработке'),
         ('RD', 'Готово'),
+    ]
+
+    # массив сложность
+    COMPLEXITY_LIST = [
+        ('ES', 'Легко'),
+        ('NM', 'Нормально'),
+        ('HD', 'Сложно'),
+    ]
+
+    # массив важность
+    IMPORTANCE_LIST = [
+        ('NT', 'Не важно'),
+        ('NI', 'Средняя важность'),
+        ('IM', 'Важно'),
+        ('VI', 'Очень важно'),
     ]
 
     title = models.CharField(max_length=100)
@@ -46,6 +62,18 @@ class Task(models.Model):
         max_length = 2,
         choices = STATUS_LIST,
         default = 'WH',
+    )
+
+    complexity = models.CharField(
+        max_length = 2,
+        choices = COMPLEXITY_LIST,
+        default = 'ES',
+    )
+
+    importance = models.CharField(
+        max_length = 2,
+        choices = IMPORTANCE_LIST,
+        default = 'NT',
     )
 
     class Meta:

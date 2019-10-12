@@ -30,7 +30,9 @@ class TaskAdmin(ImportExportModelAdmin):
         'updated_data', 
         'author', 
         'is_internal',
-        'status'
+        'status',
+        'complexity',
+        'importance'
         )
 
     list_filter = ('created_date', 'is_internal')
