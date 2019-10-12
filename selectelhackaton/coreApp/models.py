@@ -38,15 +38,15 @@ class Task(models.Model):
         ('VI', 'Очень важно'),
     ]
 
-    title = models.CharField(max_length=100)
+    title = models.CharField(_('Название'),max_length=100)
 
     created_date = models.DateTimeField(auto_now=True)
 
-    description = models.TextField()
+    description = models.TextField(_('Описание'))
 
-    deadline = models.DateTimeField(null=True, blank=True)
+    deadline = models.DateField(_('Крайний срок'),null=True, blank=True)
 
-    tags = TaggableManager()
+    tags = TaggableManager(_('Теги'))
 
     updated_data = models.DateTimeField(auto_now_add=True)
 

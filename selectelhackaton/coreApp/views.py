@@ -35,9 +35,11 @@ def add_task(request):
         task = Task.objects.create(
             author = request.user, 
             title=data['title'],
+            deadline=data['deadline'],
     # deadline = forms.DateTimeField()
             description = data['description'],
         )
+        task.tags.add(*data['tags'])
         task.save()
         return redirect(task)
 
