@@ -1,0 +1,57 @@
+{% extends "bases/bootstrap-navbar.html" %}
+{% load bootstrap4 i18n staticfiles %}
+
+{% block title %}Создать Задачу{% endblock %}
+
+{% block content %}
+<h1>Создать Задачу</h1>
+
+<form action="" method="post" id='addTask'>
+        {% csrf_token %}
+        <table>
+        {% bootstrap_form form %}
+        
+        <input type='text'
+            placeholder='Теги заказа'
+            class='flexdatalist'
+            data-min-length='1'
+            multiple='multiple'
+            list='tags_list'
+            id='mytags'
+            name='tags'>
+        
+        <datalist id="tags_list">
+            {% for tag_name in tag_list %}
+                <option value="tag_name">tag_name</option>
+            {% endfor %}
+        </datalist>
+        <br>
+        </table>
+        
+{% bootstrap_button "Сохранить" button_type="submit" button_class="btn-primary" %}
+</form>
+
+{% endblock %}
+
+
+
+{% block app_js %}
+<script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+<script src="{% static 'js/jquery.flexdatalist.min.js' %}"></script>
+{% include 'utils/csrf-token.html' %}
+<script>
+    $('.flexdatalist').flexdatalist({
+        minLength: 1
+    });
+    CKEDITOR.replace( 'id_description' );
+    $('#addTask').submit(function() {
+        var txt = $('#id_description');
+        txt.val(CKEDITOR.instances.id_description.getData());
+    });
+</script>
+{% endblock app_js %}
+
+
+{% block head_css %}
+<link href="{% static 'css/jquery.flexdatalist.min.css' %}" rel="stylesheet" type="text/css">
+{% endblock head_css %}

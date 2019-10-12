@@ -14,34 +14,46 @@ from django.db.models               import Q
 import                                     datetime
 
 from selectelhackaton.coreApp.models     import Task, Squad
+from selectelhackaton.coreApp.forms import MainTaskForm
+from taggit.models import Tag, TaggedItem
 
 @login_required
 def add_task(request):
+    context = dict()
+    context['form'] = MainTaskForm()
+    context['tag_name'] = Tag.objects.all()
 
     if request.method == "POST":
         data = request.POST
+        context['form'] = MainTaskForm(data)
 
-        # data validate
+
+
+        print(dict(data))
+        # # data validate
 
         task = Task.objects.create(
-            
+            author = request.user, 
+            title=data['title'],
+    # deadline = forms.DateTimeField()
+            description = data['description'],
         )
         task.save()
         return redirect(task)
 
-    return render(request, 'coreApp/order-ditail.html', context)
+    return render(request, 'coreApp/edit/task-add.html', context)
 
 @login_required
 # @csrf_protect # - for POST
 def task_ditail(request, pk):
-    order = get_object_or_404(Task, pk=pk)
+    task = get_object_or_404(Task, pk=pk)
 
     context= {
-        'order': order
+        'task': task
     }
 
     if request.method == "POST":
         data = dict(request.POST)
         print(data)
 
-    return render(request, 'coreApp/order-ditail.html', context)
+    return render(request, 'coreApp/task-ditail.html', context)
