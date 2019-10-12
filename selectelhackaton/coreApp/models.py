@@ -60,6 +60,12 @@ class Task(models.Model):
 
     author = models.ForeignKey(User, verbose_name=("Создатель"), on_delete=models.CASCADE)
 
+    is_internal = models.BooleanField(
+        _('Для внутреннего пользования'), 
+        default=False,
+        help=_("Является ли задача для внутреннего пользования.")
+    )
+
     status = models.CharField(
         max_length = 2,
         choices = STATUS_LIST,

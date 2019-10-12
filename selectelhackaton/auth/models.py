@@ -62,6 +62,12 @@ class User(AbstractBaseUser, PermissionsMixin):
                                                 'active. Unselect this instead of deleting accounts.'))
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
 
+    is_entity = models.BooleanField(
+        _('Юридическое лицо'), 
+        default=False,
+        help=_("Является ли пользователь юридическим лицом.")
+    )
+
     objects = MyUserManager()
 
     USERNAME_FIELD = 'email'
