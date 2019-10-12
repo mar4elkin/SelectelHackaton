@@ -11,10 +11,7 @@ from django.db.models               import Q
 #from django.contrib.postgres.search import SearchVector
 
 
-import                                     datetime
-
-from selectelhackaton.demoApp.models  
-from selectelhackaton.demoApp.forms     
+import                                     datetime   
 
 @login_required
 # @csrf_protect # - for POST
