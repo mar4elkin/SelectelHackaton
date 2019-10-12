@@ -77,4 +77,12 @@ class Squad(models.Model):
 
     description = models.TextField()
 
-    team = models.ManyToManyField(User)
+    teammates = models.ManyToManyField(User)
+    
+    #rating = models.IntegerField(max_length=10)
+
+    @property
+    def teammate_str(self):
+        return ", ".join(
+            [teammate.name for teammate in teammates]
+            )
