@@ -13,8 +13,7 @@ from django.db.models               import Q
 
 import                                     datetime
 
-from selectelhackaton.coreApp.models     import Order
-from selectelhackaton.coreApp.forms      import TagForm
+from selectelhackaton.coreApp.models     import Order, Task, Squad
 
 @login_required
 # @csrf_protect # - for POST
