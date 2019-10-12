@@ -46,6 +46,47 @@ def add_task(request):
     return render(request, 'coreApp/edit/task-add.html', context)
 
 @login_required
+@csrf_protect # - for POST
+def squad_board(request, pk):
+    
+    squad = get_object_or_404(Squad, pk=pk)
+    
+    boards_list = []
+    for board_slug, board_name in Task.STATUS_LIST:
+        boards_list.append([
+            board_slug,
+            board_name,
+            squad.tasks.filter(status=board_slug)
+        ])
+    
+
+    context= {
+        'squad':squad,
+        'boards_list':boards_list,
+    }   
+
+    if request.method == "POST":
+        data = dict(request.POST)
+        print(data)
+
+    return render(request, 'coreApp/squad-board.html', context)
+
+@login_required
+def squad_ditail(request, pk):
+    squad = get_object_or_404(Squad, pk=pk)
+    
+    context= {
+        'squad': squad,
+
+    }   
+
+    if request.method == "POST":
+        data = dict(request.POST)
+        print(data)
+
+    return render(request, 'coreApp/squad-ditail.html', context)
+
+@login_required
 # @csrf_protect # - for POST
 def task_ditail(request, pk):
     

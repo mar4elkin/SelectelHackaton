@@ -121,5 +121,12 @@ class Squad(models.Model):
     @property
     def teammate_str(self):
         return ", ".join(
-            [teammate.name for teammate in self.teammates]
+            [teammate.name for teammate in self.teammates.all()]
             )
+    
+    def __str__(self):
+        """Unicode representation of Order."""
+        return str(self.id)
+    
+    def get_absolute_url(self):
+        return reverse('squad_ditail', args=[str(self.id)])

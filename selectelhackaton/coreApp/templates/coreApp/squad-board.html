@@ -1,0 +1,48 @@
+{% extends "bases/bootstrap-navbar.html" %}
+{% load bootstrap4 i18n staticfiles %}
+
+{% block title %}Доска задач команды{% endblock %}
+
+{% block content %}
+<h1>Доска задач команды</h1>
+
+<div  id="myKanban"></div>
+{% endblock %}
+
+
+
+{% block app_js %}
+<script src="{% static 'js/jkanban.min.js' %}"></script>
+{% include 'utils/csrf-token.html' %}
+<script>
+    var kanban = new jKanban({
+        element:'#myKanban',
+
+
+        boards  :[
+                {% for board_slug, board_name, tasks in boards_list %}
+                    {
+                        'id' : 'b-{{board_slug}}',
+                        'title'  : '{{board_name}}',
+                        "item"  : [
+                            {% for task in tasks %}
+                            {
+                                "id"      : "n-{{task.pk}}",
+                                "title"   : "{{task}}",
+                                "pk"      : "{{task.pk}}",
+                            },
+                            {% endfor %}
+                            
+                        ]
+                    },
+                {% endfor %}
+            ]
+    })
+
+</script>
+{% endblock app_js %}
+
+
+{% block head_css %}
+<link href="{% static 'css/jkanban.min.css' %}" rel="stylesheet" type="text/css">
+{% endblock head_css %}
