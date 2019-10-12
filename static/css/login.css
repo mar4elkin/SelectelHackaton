@@ -1,0 +1,125 @@
+.socialaccount_providers li a.socialaccount_provider {
+  rem-border: 1px solid #ddd;
+  border-radius: 10px;
+  rem-box-shadow: 2px 2px 8px rgba(0,0,0,.7);
+  -padding: 10px;
+  margin-bottom: 6px;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  rem-font-size: 1.2em;
+}
+
+.socialaccount_providers li a.socialaccount_provider:hover {
+  text-decoration: none;
+  box-shadow: 1px 1px 2px rgba(0,0,0,.7);
+}
+
+.socialaccount_providers li a.socialaccount_provider.facebook {
+  background: #4B67A3; /* technically gradient down to #3A579A */
+  color: #fff;
+}
+.socialaccount_providers li a.socialaccount_provider.facebook:before {
+  font-family: FontAwesome;
+  font-size: 1.9em;
+  content: "\f082";
+  display: inline-block;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.socialaccount_providers li a.socialaccount_provider.google {
+  background: #DE4931;
+  color: #fff;
+}
+.socialaccount_providers li a.socialaccount_provider.google:before {
+  font-family: FontAwesome;
+  font-size: 1.9em;
+  content: "\f1a0";
+  display: inline-block;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.socialaccount_providers li a.socialaccount_provider.vk {
+  background: #5181B8;
+  color: #fff;
+}
+.socialaccount_providers li a.socialaccount_provider.vk:before {
+  font-family: FontAwesome;
+  font-size: 1.9em;
+  content: "\f189";
+  display: inline-block;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.socialaccount_providers li a.socialaccount_provider.github {
+  background: rgb(2, 2, 2);
+  color: #f1f1f1;
+}
+.socialaccount_providers li a.socialaccount_provider.github:before {
+  font-family: FontAwesome;
+  font-size: 1.9em;
+  content: "\f09b";
+  display: inline-block;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.login-form {
+    width: 340px;
+    margin: 30px auto;
+}
+  .login-form form {
+    margin-bottom: 15px;
+      background: #f7f7f7;
+      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+      padding: 30px;
+  }
+  .login-form h2 {
+      margin: 0 0 15px;
+  }
+  .login-form .hint-text {
+  color: #777;
+  padding-bottom: 15px;
+  text-align: center;
+  }
+  .form-control, .btn {
+      min-height: 38px;
+      border-radius: 2px;
+  }
+  .form-group {
+    width:100%;
+    margin-bottom: 1rem;
+  }
+  .login-btn {        
+      font-size: 15px;
+      font-weight: bold;
+  }
+  .or-seperator {
+      margin: 20px 0 10px;
+      text-align: center;
+      border-top: 1px solid #ccc;
+  }
+  .or-seperator i {
+      padding: 0 10px;
+      background: #f7f7f7;
+      position: relative;
+      top: -11px;
+      z-index: 1;
+  }
+  .social-btn .btn {
+      margin: 10px 0;
+      font-size: 15px;
+      text-align: left; 
+      line-height: 24px;       
+  }
+.social-btn .btn i {
+  float: left;
+  margin: 4px 15px  0 5px;
+      min-width: 15px;
+}
+.input-group-addon .fa{
+  font-size: 18px;
+}

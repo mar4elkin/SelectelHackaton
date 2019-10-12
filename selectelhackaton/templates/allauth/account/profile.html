@@ -1,0 +1,32 @@
+{% extends "bases/bootstrap-navbar.html" %}
+
+{% load bootstrap4 %}
+
+{% load i18n %}
+{% block main_content %}
+<div class="container">
+<h1>{% trans 'Profile' %}</h1>
+  {# Hmm. Not thrilled about this. #}
+  {# Could use django-bootstrap4 which removes some of this ugliness. #}
+  {# Or some AJAX-based way to retrieve messages. #}
+  {# I don't like the use of cookies for this. #}
+  <div class="col-sm-6 col-md-4 col-lg-4">
+    <h3>{% trans "Profile" %}</h3>
+    <ul class="list-unstyled">
+      <li>First name: <strong>{{user1.first_name}}</strong></li>
+      <li>Last name: <strong>{{user1.last_name}}</strong></li>
+      <li>Display name: <strong>{{user1.display_name}}</strong></li>
+      <li>Email: <strong>
+        <a class="btn btn-link" href="mailto:{{user1.email}}">{{user1.email}}</a></strong></li>
+    </ul>
+  </div>
+  <div class="col-sm-6 col-md-4 col-lg-4">
+    <h3>Picture</h3>
+    <p class="picture-frame">
+    {% if user1.profile.avatar_url %}<img alt="" src="{{user1.profile.avatar_url}}" style="width: 256px; height: 256px">
+    {% else %}No picture available yet.{% endif %}
+    </p>
+  </div>
+</div>
+
+{% endblock %}

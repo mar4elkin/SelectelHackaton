@@ -1,0 +1,21 @@
+<input type='{{ widget.type }}'
+       placeholder='{{placeholder}}'
+       class='{{input_class}}'
+       data-min-length='1'
+       multiple='multiple'
+       list='{{ widget.name }}_datalist'
+       name='{{ widget.name }}'
+       {{ attrs }}>
+
+<datalist id="{{ widget.name }}_datalist">
+    
+    {% for tag_name in tag_list %}
+        <option value="{{tag_name}}">{{tag_name}}</option>       
+    {% endfor %}
+</datalist>
+
+<script>
+    $('.flexdatalist').flexdatalist({
+        minLength: 1
+   });
+</script>

@@ -1,0 +1,39 @@
+{% extends "bases/bootstrap-auth.html" %}
+
+{% load i18n %}
+{% load bootstrap4 %}
+{% load account socialaccount %}
+
+{% block title %}{% trans "Вход" %}{% endblock %}
+
+{% block inner-content %}
+{% get_providers as socialaccount_providers %}
+
+<div class="login-form">
+    <form class="login" method="POST" action="{% url 'account_login' %}"> 
+        <h2 class="text-center">{% trans "Вход" %}</h2>		
+        {% if socialaccount_providers  %}
+        {% include "allauth/account/provider_panel.html" with process="login" %}   
+    <div class="or-seperator"><i>{% trans "or" %}</i></div>
+    {% endif %}
+    <div class="form-group">
+    <div class="input-group">
+
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% if redirect_field_value %}
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        {% endif %}
+            </div>
+        </div>  
+            
+        <div class="form-group">
+            <button type="submit" class="btn btn-success btn-block login-btn">{% trans "Войти" %}</button>
+        </div>
+        <div class="clearfix">
+            <a class="pull-right text-success" href="{% url 'account_reset_password' %}" class="text-success">{% trans "Forgot Password?" %}</a>
+        </div>  
+    </form>
+    <div class="hint-text small">{% trans 'Нет аккаунта?' %} <a href="{% url 'account_signup' %}" class="text-success">{% trans 'Зарегистрируйтесть сейчас!' %}</a></div>
+</div>                           
+{% endblock %}

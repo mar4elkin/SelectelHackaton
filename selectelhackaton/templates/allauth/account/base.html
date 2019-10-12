@@ -1,0 +1,33 @@
+{% extends "bases/bootstrap-navbar.html" %}
+
+{% load i18n %}
+
+{% block main_content %}
+
+<div class=container>
+<h1>Мой аккаунт</h1>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link {% block account_nav_email %}{% endblock %}" href="{% url 'account_email' %}">{% trans 'E-mail Addresses' %}</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link {% block account_nav_profile_edit %}{% endblock %}" href="{% url 'account_edit_profile' %}">Профиль</a>
+  </li>
+  <li class="nav-item">
+    <a  class="nav-link {% block account_nav_change_password %}{% endblock %}" href="{% url 'account_change_password' %}">{% trans 'Change Password' %}</a>
+  </li>
+  {% url 'socialaccount_connections' as connections_url %}
+  {% if connections_url %}
+  <li class="nav-item">
+    <a class="nav-link {% block account_nav_socialaccount_connections %}{% endblock %}" href="{{ connections_url}}">Подключённые аккаунты</a>
+  </li>
+  {% else %}
+  <li>{% trans "No connections url" %}</li>
+  {% endif %}
+</ul>
+{% block account_content %}
+{% endblock %}
+
+</div>
+
+{% endblock %}

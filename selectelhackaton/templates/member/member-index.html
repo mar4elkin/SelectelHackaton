@@ -1,0 +1,31 @@
+{% extends "bases/bootstrap-navbar.html" %}
+{% load bootstrap4 i18n %}
+
+{% block title %}{% trans "Welcome" %}{% endblock %}
+
+{% block content %}
+  {% bootstrap_messages %}
+  <div class="row">
+
+    <div class="col-sm-6 col-md-4 col-lg-4">
+      <h3>Picture</h3>
+      <p class="picture-frame">
+      {% if user.profile.avatar_url %}<img alt="" src="{{user.profile.avatar_url}}" style="width: 256px; height: 256px">
+      {% else %}No picture available yet.{% endif %}
+      </p>
+    </div>
+    <div class="col-sm-6 col-md-4 col-lg-4">
+      <h3>{% trans "Profile" %}</h3>
+      <ul class="list-unstyled">
+        <li>First name: <strong>{{user.first_name}}</strong></li>
+        <li>Last name: <strong>{{user.last_name}}</strong></li>
+        <li>Display name: <strong>{{user.display_name}}</strong></li>
+        <li>Email: <strong>{{user.email}}</strong></li>
+        <li>{% if request.user.profile.account_verified %}Verified{% else %}Unverified{% endif %}</li>
+      </ul>
+      <a href="{% url 'account_edit_profile' %}">Edit</a>
+    </div>
+  </div>
+{% endblock %}
+
+

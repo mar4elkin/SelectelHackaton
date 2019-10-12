@@ -1,0 +1,32 @@
+{% extends "bases/bootstrap-auth.html" %}
+
+{% load i18n %}
+{% load account socialaccount %}
+
+{% block title %}{% trans "Подтвердите адрес электронной почты" %}{% endblock %}
+
+
+{% block inner-content %}
+<h1>{% trans "Подтвердите адрес электронной почты" %}</h1>
+
+{% if confirmation %}
+
+{% user_display confirmation.email_address.user as user_display %}
+        
+<p>{% blocktrans with confirmation.email_address.email as email %}Пожалуйста, подтвердите, что <a href="mailto:{{email}}">{{ email }}</a> является адресом электронной почты для пользователя {{ user_display }}.{% endblocktrans %}</p>
+
+<form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
+{% csrf_token %}
+    <button class="btn btn-primary" type="submit">{% trans 'Подтвердить' %}</button>
+</form>
+
+{% else %}
+
+{% url 'account_email' as email_url %}
+
+<p>{% blocktrans %}Эта ссылка для подтверждения по электронной почте истекла или недействительна. пожалуйста <a href="{{ email_url}}"> выдать новый запрос на подтверждение по электронной почте</a>.{% endblocktrans %}</p>
+
+{% endif %}
+
+{% endblock %}
+<!-- TODO: trans и многоязычность -->

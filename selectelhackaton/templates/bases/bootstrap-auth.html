@@ -1,0 +1,12 @@
+{% extends "bases/bootstrap-minimal.html" %}
+{% load staticfiles %}
+
+{% block main_content %}
+<div class="container">
+  
+    {% block inner-content %}
+    {% endblock inner-content %}
+</div><!-- container -->
+{% endblock main_content %}
+
+{% block head_css %}<link rel="stylesheet" media="screen" href='{% static "css/login.css" %}'>{% endblock head_css %}

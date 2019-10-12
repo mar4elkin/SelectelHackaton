@@ -1,0 +1,18 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load bootstrap4 %}
+
+{% block title %}{% trans "Change Password" %}{% endblock %}
+{% block account_nav_profile_edit %}active{% endblock %}
+
+{% block account_content %}
+<form action="{% url 'account_edit_profile' %}" method="post" class="form">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  {% buttons %}
+  <button type="submit" class="btn btn-primary">Изменить</button>
+  {% endbuttons %}
+
+</form>
+{% endblock %}

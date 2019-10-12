@@ -1,0 +1,68 @@
+version: '3.3'
+
+# хранилища
+volumes:
+    pgdata:
+        driver: local
+        
+services:
+    postgres:
+# Ниже даже расписывать не хочу, насколько все просто: логин, пароль, БД, порты и т.д.
+        image: postgres:10.8
+        ports:
+            - 5432:5432
+        environment:
+            POSTGRES_USER: test
+            POSTGRES_PASSWORD: test1234
+            POSTGRES_DB: postgres
+            PGDATA: /var/lib/postgresql/data
+        volumes:
+            - pgdata:/var/lib/postgresql/data
+
+    nginx:
+# при падении будет стараться подняться
+        restart: always
+# только свежий nginx
+        image: nginx:latest
+# слушает порт 8080
+        expose:
+          - 8080
+# мапаем порт 80 на его 8080. Тогда сайт будет доступен по адресу localhost. Убедись, что порт у тебя не занят.
+        ports:
+          - "80:8080"
+# монтируем только те директории, в которых лежит статика, т.к. nginx с динамикой не будет работать. Также директорию с логами и файл настройки, который мы подготовили.
+        volumes:
+            - ./static:/srv/www/selectelhackaton/static
+            - ./asseets:/srv/www/selectelhackaton/asseets
+            - ./logs:/srv/www/selectelhackaton/logs
+            - ./docker/nginx:/etc/nginx/conf.d
+# и nginx зависит от контейнера django. Т.е. django должен быть запущен первым
+        depends_on:
+            - django
+    django:
+        container_name: selectelhackaton_django
+        restart: always
+# указываем откуда собирать образ
+        build:
+            context: .
+            dockerfile: docker/django/Dockerfile
+# монтируем директорию проекта
+        volumes:
+            - .:/srv/www/selectelhackaton
+        expose:
+          - 8000
+        ports:
+            - 8000:8000
+        environment:
+            - DEBUG=1
+            - SQL_ENGINE=django.db.backends.postgresql
+            - SQL_DATABASE=postgres
+            - SQL_USER=test
+            - SQL_PASSWORD=test1234
+            - SQL_HOST=postgres
+            - SQL_PORT=5432
+# запускаем gunicorn
+        #command: "gunicorn -c gunicorn.py selectelhackaton .wsgi"
+        command: "gunicorn -c gunicorn.py -b 0.0.0.0:8000 selectelhackaton.wsgi:application"
+        depends_on:
+          - postgres

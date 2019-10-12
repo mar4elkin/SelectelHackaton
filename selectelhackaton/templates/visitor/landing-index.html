@@ -1,0 +1,43 @@
+{% extends "bases/bootstrap-navbar.html" %}
+{% load staticfiles %}
+
+{% block main_content %}
+
+
+    <main role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3">Привет!</h1>
+          <p>Это пример стартовой страницы. У нас тут просто шаблон сайта с пользователями.</p>
+          <p><a class="btn btn-primary btn-lg" href="{% url 'landing_about' %}" role="button">Читать подробнее &raquo;</a></p>
+        </div>
+      </div>
+
+      <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+          <div class="col-md-4">
+            <h2>Про пользователей</h2> Для ознакомления можете зарегистрироваться.</p>
+            <p><a class="btn btn-secondary" href="{% url 'user_home' %}" role="button">Сделать это &raquo;</a></p>
+          </div>
+          <div class="col-md-4">
+            <h2>Локализация</h2>
+            <p>Над этим я работаю. Как можете видеть. Над этим я работаю)<p><a class="btn btn-secondary" href="{% url 'website_contact' %}">О авторе &raquo;</a></p>
+          </div>
+          <div class="col-md-4">
+            <h2>НЯштики?!</h2>
+            <p>Можно позалипать на красивые графики...Но после регистрации)))</p>
+            <p><a class="btn btn-secondary" href="{% url 'user_home' %}" role="button">Тут &raquo;</a></p>
+          </div>
+        </div>
+
+        <hr>
+
+      </div> <!-- /container -->
+
+    </main>
+
+
+{% endblock %}

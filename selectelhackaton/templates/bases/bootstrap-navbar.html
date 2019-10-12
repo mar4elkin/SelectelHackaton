@@ -1,0 +1,12 @@
+{% extends "bases/bootstrap-jquery.html" %}
+{% load staticfiles %}
+
+{% block nav %}
+{% if user.is_authenticated %}
+    {% include "bases/bootstrap-navbar-auth.html" %}
+{% else %}
+    {% include "bases/bootstrap-navbar-unauth.html" %}
+{% endif %}
+  <br>
+{% endblock %}
+
