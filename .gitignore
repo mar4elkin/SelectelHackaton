@@ -1,0 +1,24 @@
+*.pyc
+*.tmp
+*.swp
+*.db
+*.sqlite3
+*/settings_*.py
+*.iml
+.idea
+DEL
+*.sql
+*.bak
+mypy*
+
+migrations
+__pycache__
+
+logs/
+*.log
+static/
+
+db.sqlite3-journal
+
+# Jupyter Notebook
+.ipynb_checkpoints
