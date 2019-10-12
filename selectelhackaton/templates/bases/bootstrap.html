@@ -38,22 +38,22 @@
 {% endblock main_content %}
 
 {% if user.is_authenticated %}
-<footer class="footer">
+<footer class="footer page-footer font-small">
     
   <div class="container-fluid">
-    <ul class="navbar-nav ml-auto">
+    <ul class="footList">
 
-      <li class="nav-item indexNav__element">
-          <a class="nav-link" href="{% url 'landing_about' %}">О проекте</a>
+      <li class="footListElement">
+          <a class="" href="{% url 'landing_about' %}">О проекте</a>
         </li>
-        <li class="nav-item indexNav__element">
-          <a class="nav-link" href="#">Контакты</a>
+        <li class="footListElement">
+          <a class="" href="#">Контакты</a>
         </li>
-        <li class="nav-item indexNav__element">
-          <a class="nav-link" href="#">Наши партнеры</a>
+        <li class="footListElement">
+          <a class="" href="#">Наши партнеры</a>
         </li>
-        <li class="nav-item indexNav__element">
-          <a class="nav-link" href="#">Возможности</a>
+        <li class="footListElement">
+          <a class="" href="#">Возможности</a>
         </li>
       </li>
     </ul>
@@ -63,7 +63,7 @@
 
 
 {% block footer %}
-  <footer class="footer">
+  <footer class="footer page-footer font-small">
     <div class="container-fluid">
       <span class="text-muted text-white">
         {% include "copyright.html" %}

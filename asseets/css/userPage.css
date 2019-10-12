@@ -34,3 +34,19 @@
     font-size: 20px;
     color:grey;
 }
+
+/* footer */
+
+.footListElement{
+    text-decoration: none;
+    display: inline;
+    margin-right: 20px;
+}
+.footList{
+    text-align: center;
+}
+
+.footListElement > a {
+    color:grey;
+    text-decoration: none;
+}
