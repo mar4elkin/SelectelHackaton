@@ -59,3 +59,41 @@ def task_ditail(request, pk):
         print(data)
 
     return render(request, 'coreApp/task-ditail.html', context)
+
+@login_required
+def task_edit(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+
+    if request.user != task.author:
+        return HttpResponseNotFound()
+
+    context = dict()
+    context['form'] = MainTaskForm(initial={ 
+        'title': task.title,
+        'deadline': task.deadline,
+        'description': task.description
+    })
+    context['tags'] = task.tags_list
+    context['tag_list'] = Tag.objects.all()
+
+    if request.method == "POST":
+        data = request.POST
+        context['form'] = MainTaskForm(data)
+
+
+
+        print(dict(data))
+        # # data validate
+
+        task = Task.objects.create(
+            author = request.user, 
+            title=data['title'],
+            deadline=data['deadline'],
+    # deadline = forms.DateTimeField()
+            description = data['description'],
+        )
+        task.tags.add(*data['tags'].split(','))
+        task.save()
+        return redirect(task)
+
+    return render(request, 'coreApp/edit/task-edit.html', context)

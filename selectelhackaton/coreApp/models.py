@@ -82,6 +82,10 @@ class Task(models.Model):
         verbose_name = _('Заказ')
         verbose_name_plural = _('Заказы')
 
+    @property
+    def tags_list(self):
+        return ", ".join(o.name for o in self.tags.all())
+    
     def __str__(self):
         """Unicode representation of Order."""
         return self.title
