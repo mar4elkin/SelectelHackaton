@@ -2,6 +2,7 @@ from django.db                  import models
 from django.urls                import reverse
 from django.utils               import timezone
 from django.utils.translation   import ugettext_lazy as _
+from django.urls                import reverse
 
 from taggit.managers            import TaggableManager
 from taggit.models              import TagBase, TaggedItemBase, GenericUUIDTaggedItemBase
@@ -56,6 +57,9 @@ class Task(models.Model):
     def __str__(self):
         """Unicode representation of Order."""
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('task_ditail', args=[str(self.id)])
 
 class Squad(models.Model):
     """ Это группы (компания) """

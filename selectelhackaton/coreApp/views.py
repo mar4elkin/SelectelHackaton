@@ -1,6 +1,6 @@
 from django.views.generic.base      import TemplateView
 from django.views.generic           import View
-from django.shortcuts               import render, get_object_or_404
+from django.shortcuts               import render, get_object_or_404, redirect
 from django.template                import loader, RequestContext
 from django.urls                    import reverse
 from django.http                    import JsonResponse, HttpResponseNotFound, HttpResponse, HttpResponseRedirect
@@ -13,24 +13,35 @@ from django.db.models               import Q
 
 import                                     datetime
 
-from selectelhackaton.coreApp.models     import Order, Task, Squad
+from selectelhackaton.coreApp.models     import Task, Squad
+
+@login_required
+def add_task(request):
+
+    if request.method == "POST":
+        data = request.POST
+
+        # data validate
+
+        task = Task.objects.create(
+            
+        )
+        task.save()
+        return redirect(task)
+
+    return render(request, 'coreApp/order-ditail.html', context)
 
 @login_required
 # @csrf_protect # - for POST
-def order_ditail(request, pk):
-    order = get_object_or_404(Order, pk=pk)
+def task_ditail(request, pk):
+    order = get_object_or_404(Task, pk=pk)
 
     context= {
-        'order': order,
-        'tag_form': TagForm()
+        'order': order
     }
 
     if request.method == "POST":
         data = dict(request.POST)
         print(data)
-
-        if 'tags[]' in data:
-            order.tags.add(*data['tags[]'])
-            order.tags.add('adssads', 'asdsadas', '213213')
 
     return render(request, 'coreApp/order-ditail.html', context)
