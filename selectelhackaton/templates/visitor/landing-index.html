@@ -7,35 +7,77 @@
     <main role="main">
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        <div class="container">
-          <h1 class="display-3">Привет!</h1>
-          <p>Это пример стартовой страницы. У нас тут просто шаблон сайта с пользователями.</p>
-          <p><a class="btn btn-primary btn-lg" href="{% url 'landing_about' %}" role="button">Читать подробнее &raquo;</a></p>
-        </div>
-      </div>
+      <section class="indexAbout">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="about">
+                  <h1 class="about__title">Любые проблемы нам по плечу!</h1>
+                  <p class="about__text">Наш сервис будет предоставлять возможность клиентам запрашивать услуги у компаний, которые, в свою очередь, будут распределять эти услуги между своими работниками или группами.</p>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="mainButtonContainer">
+                    <button class="mainStart">Начать сейчас</button>
+                </div>
+              </div>
+            </div>
+          </div>
+      </section>
 
-      <div class="container">
-        <!-- Example row of columns -->
+      <section class="ourAdvantages">
+      <div class="container contBack">
         <div class="row">
-          <div class="col-md-4">
-            <h2>Про пользователей</h2> Для ознакомления можете зарегистрироваться.</p>
-            <p><a class="btn btn-secondary" href="{% url 'user_home' %}" role="button">Сделать это &raquo;</a></p>
-          </div>
-          <div class="col-md-4">
-            <h2>Локализация</h2>
-            <p>Над этим я работаю. Как можете видеть. Над этим я работаю)<p><a class="btn btn-secondary" href="{% url 'website_contact' %}">О авторе &raquo;</a></p>
-          </div>
-          <div class="col-md-4">
-            <h2>НЯштики?!</h2>
-            <p>Можно позалипать на красивые графики...Но после регистрации)))</p>
-            <p><a class="btn btn-secondary" href="{% url 'user_home' %}" role="button">Тут &raquo;</a></p>
+          <div class="col-lg-12">
+            <div class="advantages">
+              <h1 class="advantages__title">
+                Приемущества
+              </h1>
+            </div>
           </div>
         </div>
 
-        <hr>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="infoGroups wow zoomIn" data-wow-delay="0.4s">
+                  <span><i class="person__icon fa fa-vk"></i></span>
+                  <h3 class="infoGroups__title">
+                    Команда
+                  </h3>
+                  <p class="infoGroups__text">
+                    Мы разделяем обязанности при создании сайта, что позволяет выполнять работу быстрее.
+                  </p>
+                </div>
+              </div>
+        
+              <div class="col-lg-4">
+                <div class="infoGroups wow zoomIn" data-wow-delay="0.6s">
+                  <img src="img/head.png" alt="" class="infoGroups__icon" >
+                  <h3 class="infoGroups__title">
+                    Креативность
+                  </h3>
+                  <p class="infoGroups__text">
+                    Мы придумываем интересные решения и идеи для улучшения вашего сайта.
+                  </p>
+                </div>
+              </div>
 
+              <div class="col-lg-4">
+                  <div class="infoGroups wow zoomIn" data-wow-delay="0.6s">
+                    <img src="img/head.png" alt="" class="infoGroups__icon" >
+                    <h3 class="infoGroups__title">
+                      Креативность
+                    </h3>
+                    <p class="infoGroups__text">
+                      Мы придумываем интересные решения и идеи для улучшения вашего сайта.
+                    </p>
+                  </div>
+                </div>
+        </div>
       </div> <!-- /container -->
+    </section>
 
     </main>
 

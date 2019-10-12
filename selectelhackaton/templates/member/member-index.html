@@ -1,19 +1,33 @@
 {% extends "bases/bootstrap-navbar.html" %}
 {% load bootstrap4 i18n %}
+{% load staticfiles i18n %}
+
+{% block app_css %}
+<link rel="stylesheet" href='{% static "css/userPage.css" %}'>
+{% endblock app_css %}
 
 {% block title %}{% trans "Welcome" %}{% endblock %}
 
 {% block content %}
   {% bootstrap_messages %}
+<div class="container">
   <div class="row">
-
-    <div class="col-sm-6 col-md-4 col-lg-4">
-      <h3>Picture</h3>
-      <p class="picture-frame">
-      {% if user.profile.avatar_url %}<img alt="" src="{{user.profile.avatar_url}}" style="width: 256px; height: 256px">
-      {% else %}No picture available yet.{% endif %}
-      </p>
+    <div class="col-lg-12">
+      <div class="mainInformation">
+        <div class="row">
+          <div class="col-md-4">
+              {% if user.profile.avatar_url %}<img alt="" src="{{user.profile.avatar_url}}" style="width: 80px; height: 80px" class="userLogo">
+              {% else %}No picture available yet.{% endif %}
+          </div>
+          <div class="col-md-6">
+              <span class="userName">{{user.display_name}}</span>
+              <span class="userStatus">Юридическе лицо</span>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+  <!--
     <div class="col-sm-6 col-md-4 col-lg-4">
       <h3>{% trans "Profile" %}</h3>
       <ul class="list-unstyled">
@@ -24,7 +38,7 @@
         <li>{% if request.user.profile.account_verified %}Verified{% else %}Unverified{% endif %}</li>
       </ul>
       <a href="{% url 'account_edit_profile' %}">Edit</a>
-    </div>
+    </div>-->
   </div>
 {% endblock %}
 

@@ -23,7 +23,7 @@ DOCKER = bool(environ.get('DOCKER', default=0))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'di*c6v7tg8_i(h#gb-7%3#k3v$n##m*#q!(_x0ycj&amp;9(1!nks-'
+SECRET_KEY = 'av000j2_xf5f3bm6+!l)ihidw7jh1^0*5gawr==v1h_q*fwm05'
 
 ALLOWED_HOSTS = ['*']
 

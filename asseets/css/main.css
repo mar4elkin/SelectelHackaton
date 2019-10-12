@@ -1,19 +1,103 @@
 /* Sticky footer styles
 -------------------------------------------------- */
-html {
-    position: relative;
-    min-height: 100%;
+/* standarts */
+
+body{
+    font-family: 'Open Sans', sans-serif;
+  }
+  
+  h3 {
+    font-size: 24px;
+    font-weight: 400;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    font-weight: 700;
+    margin-bottom: 30px;
+  }
+
+.indexBody{
+    background-image: url(../img/mainGradient.jpg);
+}
+/* Для всех белых контейнеров */
+.contBack{
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px;
 }
 
-body {
-    margin-bottom: 60px; /* Margin bottom by footer height */
+/* navbar*/
+
+.indexNavbar{
+    font-size: 25px;
+    font-family: 'Source Sans Pro', sans-serif;
+    margin-top: 40px;
+    margin-bottom: 50px;
+}
+.indexBrand{
+    font-size: 30px;
+    font-family: 'Roboto Mono', monospace;
+}
+.indexNav__element{
+    margin-left: 30px;
 }
 
-.footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 60px; /* Set the fixed height of the footer here */
-    line-height: 60px; /* Vertically center the text there */
-    background-color: #f5f5f5;
+/* MAIN CONTENT*/
+
+.about{
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+}
+.about__title{
+    font-size:50px;
+    width: 400px;
+    font-family: 'Rubik Mono One', sans-serif;
+
+}
+.about__text{
+    font-size: 30px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+.mainButtonContainer{
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 40px;
+}
+
+.mainStart{
+    width: 60%;
+    height: 150px;
+    font-size: 30px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0);
+    cursor: pointer;
+    outline: none;
+    border: 4px #fff solid;
+    border-radius: 10px;
+    font-weight: 700;
+
+}
+
+/* Advantages */
+.advantages{
+    text-align: center;
+
+
+}
+.advantages__title{
+    font-size: 40px;
+    font-family: 'Rubik Mono One', sans-serif;
+    margin-bottom: 40px;
+    margin-top: 30px;
+
+}
+.infoGroups{
+    text-align: center;
+    font-size: 20px;
+}
+.infoGroups__title{
+    font-size: 30px;
 }

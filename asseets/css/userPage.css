@@ -1,0 +1,36 @@
+/* navbar*/
+
+.indexNavbar{
+    font-size: 25px;
+    font-family: 'Source Sans Pro', sans-serif;
+    margin-top: 40px;
+    margin-bottom: 50px;
+}
+.indexBrand{
+    font-size: 30px;
+    font-family: 'Roboto Mono', monospace;
+}
+.indexNav__element{
+    margin-left: 30px;
+}
+
+.mainInformation{
+    background-image: url(../img/userGradient.jpg);
+    padding: 30px;
+    border-radius: 10px;
+    width: 500px;
+}
+.userLogo{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+.userName{
+    margin-top: 20px;
+    font-size: 30px;
+    margin-left: 15px;
+}
+.userStatus{
+    font-size: 20px;
+    color:grey;
+}
