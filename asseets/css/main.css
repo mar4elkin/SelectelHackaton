@@ -5,7 +5,6 @@
 body{
     font-family: 'Open Sans', sans-serif;
   }
-
   
   h3 {
     font-size: 24px;
@@ -55,19 +54,29 @@ body{
     border-radius: 10px;
 }
 .about__title{
-    font-size:50px;
-    width: 400px;
-    font-family: 'Rubik Mono One', sans-serif;
+    font-size:40px;
+    width: 500px;
+    font-family: 'Russo One', sans-serif;
 
 }
 .about__text{
-    font-size: 30px;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    color: grey;
+    width: 500px;
+    font-family: 'Rubik', sans-serif;
 }
-.mainButtonContainer{
-    text-align: center;
-    margin-top: 60px;
-    margin-bottom: 40px;
+.about__button{
+    width: 130px;
+    height: 50px;
+    border-radius: 25px;
+    color: #fff;
+    background-color: #4285f4;
+    border: 1px #4285f4 solid;
+}
+.mainImg{
+    width: 540px;
+    height: 463px;
+    margin-left: 60px;
 }
 
 .mainStart{
@@ -85,6 +94,11 @@ body{
 }
 
 /* Advantages */
+
+.ourAdvantages{
+    background-color: #F8F9FA;
+}
+
 .advantages{
     text-align: center;
 
@@ -92,7 +106,7 @@ body{
 }
 .advantages__title{
     font-size: 40px;
-    font-family: 'Rubik Mono One', sans-serif;
+    font-family: 'Russo One', sans-serif;
     margin-bottom: 40px;
     margin-top: 30px;
 
@@ -100,9 +114,22 @@ body{
 .infoGroups{
     text-align: center;
     font-size: 20px;
+    background-color: #fff;
+    height: 300px;
+    padding: 20px;
 }
 .infoGroups__title{
-    font-size: 30px;
+    font-size: 25px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 700;
+}
+
+.infoGroups__text{
+    font-size: 18px;
+    margin-right: 0;
+    width: 250px;
+    color: grey;
+    font-family: 'Rubik', sans-serif;
 }
 
 /* footer */
