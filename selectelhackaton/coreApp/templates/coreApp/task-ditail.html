@@ -7,6 +7,11 @@
 
     <h1>{{task}}
         {% if user == task.author %}<a href="{% url 'task_edit' pk=task.pk %}"><i class="fa fa-cogs" aria-hidden="true"></i></a>{% endif %}
+        
+        {% if available %}
+            Можно откликнутся 
+        {% endif %}
+            
     </h1>
     <hr>
     <h3>Описание:</h3>

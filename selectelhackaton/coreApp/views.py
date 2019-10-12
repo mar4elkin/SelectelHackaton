@@ -48,11 +48,13 @@ def add_task(request):
 @login_required
 # @csrf_protect # - for POST
 def task_ditail(request, pk):
+    
     task = get_object_or_404(Task, pk=pk)
-
+    
     context= {
-        'task': task
-    }
+        'task': task,
+        'available':task.is_available(request.user)
+    }   
 
     if request.method == "POST":
         data = dict(request.POST)

@@ -92,18 +92,34 @@ class Task(models.Model):
 
     def get_absolute_url(self):
         return reverse('task_ditail', args=[str(self.id)])
+    
+    def is_available(self, user):
+        squads = user.user_squads.all()
+
+        if user == self.author:
+            return False
+
+        for squad in squads:
+            teammates = squad.teammates
+            for teammate in teammates:
+                if teammate == self.author:
+                    return False
+        
+        return True
+        
 
 class Squad(models.Model):
     """ Это группы (компания) """
 
     description = models.TextField()
 
-    teammates = models.ManyToManyField(User)
+    teammates = models.ManyToManyField(User, related_name='user_squads')
     
+    tasks = models.ManyToManyField(Task, related_name='task_squads')
     #rating = models.IntegerField(max_length=10)
 
     @property
     def teammate_str(self):
         return ", ".join(
-            [teammate.name for teammate in teammates]
+            [teammate.name for teammate in self.teammates]
             )

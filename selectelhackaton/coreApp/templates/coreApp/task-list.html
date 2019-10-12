@@ -1,10 +1,24 @@
 {% extends "bases/bootstrap-navbar.html" %}
 {% load bootstrap4 i18n staticfiles %}
 
-{% block title %}Редактировать задачу{% endblock %}
+{% block title %}Список доступных задач{% endblock %}
 
 {% block content %}
-<h1>Редактировать задачу</h1>
+    <h1>Список доступных задач</h1>
+
+    {% for task in task_list %}
+        
+    <div class="card">
+        <h5 class="card-header">Featured</h5>
+        <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+    {% empty %}
+        <h4>Увы нет доступных задач</h4>
+    {% endfor %}
 
 {% endblock %}
 
