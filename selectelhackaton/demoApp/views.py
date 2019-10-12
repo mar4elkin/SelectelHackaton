@@ -13,8 +13,8 @@ from django.db.models               import Q
 
 import                                     datetime
 
-from selectelhackaton.demoApp.models     import Order
-from selectelhackaton.demoApp.forms      import TagForm
+from selectelhackaton.demoApp.models  
+from selectelhackaton.demoApp.forms     
 
 @login_required
 # @csrf_protect # - for POST
@@ -22,8 +22,6 @@ def order_ditail(request, pk):
     order = get_object_or_404(Order, pk=pk)
 
     context= {
-        'order': order,
-        'tag_form': TagForm()
     }
 
     if request.method == "POST":
