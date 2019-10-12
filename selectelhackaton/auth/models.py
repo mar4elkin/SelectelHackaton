@@ -99,8 +99,6 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def guess_display_name(self):
         """Set a display name, if one isn't already set."""
-        if self.display_name:
-            return
 
         if self.first_name and self.last_name:
             dn = "%s %s" % (self.first_name, self.last_name[0])  # like "Andrew E"
