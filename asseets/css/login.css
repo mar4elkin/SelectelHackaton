@@ -70,6 +70,8 @@
 .login-form {
     width: 340px;
     margin: 30px auto;
+
+    color: #000;
 }
   .login-form form {
     margin-bottom: 15px;
