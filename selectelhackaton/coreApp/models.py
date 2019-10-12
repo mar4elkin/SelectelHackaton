@@ -73,6 +73,8 @@ class Task(models.Model):
     )
 
 class Squad(models.Model):
+    """ Это группы (компания) """
 
     description = models.TextField()
+
     team = models.ManyToManyField(User)
