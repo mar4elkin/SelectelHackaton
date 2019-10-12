@@ -21,7 +21,7 @@ from taggit.models import Tag, TaggedItem
 def add_task(request):
     context = dict()
     context['form'] = MainTaskForm()
-    context['tag_name'] = Tag.objects.all()
+    context['tag_list'] = Tag.objects.all()
 
     if request.method == "POST":
         data = request.POST
@@ -39,7 +39,7 @@ def add_task(request):
     # deadline = forms.DateTimeField()
             description = data['description'],
         )
-        task.tags.add(*data['tags'])
+        task.tags.add(*data['tags'].split(','))
         task.save()
         return redirect(task)
 

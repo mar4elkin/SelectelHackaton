@@ -22,7 +22,7 @@
         
         <datalist id="tags_list">
             {% for tag_name in tag_list %}
-                <option value="tag_name">tag_name</option>
+                <option value="{{tag_name}}">{{tag_name}}</option>
             {% endfor %}
         </datalist>
         <br>
@@ -45,6 +45,12 @@
     });
     CKEDITOR.replace( 'id_description' );
     $('#addTask').submit(function() {
+        var deadline = $("#id_deadline");
+
+        if(deadline == null || deadline.val() == '' || deadline.val() == null){
+            deadline.val("2000-01-01");
+        }
+
         var txt = $('#id_description');
         txt.val(CKEDITOR.instances.id_description.getData());
     });
