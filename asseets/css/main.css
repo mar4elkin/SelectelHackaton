@@ -6,9 +6,6 @@ body{
     font-family: 'Open Sans', sans-serif;
   }
 
-  footer{
-    flex: 0 0 auto;
-  }
   
   h3 {
     font-size: 24px;
@@ -107,3 +104,19 @@ body{
 .infoGroups__title{
     font-size: 30px;
 }
+
+/* footer */
+.footListElement{
+    text-decoration: none;
+    display: inline;
+    margin-right: 20px;
+}
+.footList{
+    text-align: center;
+}
+
+.footListElement > a {
+    color:grey;
+    text-decoration: none;
+}
+
