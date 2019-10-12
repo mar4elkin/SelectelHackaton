@@ -8,6 +8,7 @@ from taggit.models              import TagBase, TaggedItemBase, GenericUUIDTagge
 
 import uuid
 
+from selectelhackaton.auth.models import User
 
 class Order(models.Model):
     """ Это заказ """
@@ -33,3 +34,23 @@ class Order(models.Model):
     def __str__(self):
         """Unicode representation of Order."""
         return self.title
+
+
+class Task(models.Model):
+    """ Это задачи (компания) """
+    
+    title = models.CharField(max_length=100)
+
+    created_date = models.DateTimeField(auto_now=True)
+
+    discription = models.TextField()
+
+    deadline = models.DateTimeField(null=True, black=True)
+
+    tags = TaggableManager()
+
+    updated_data = models.DateTimeField(auto_now=True, auto_now_add=True)
+
+    author = models.ForeignKey(User, verbose_name=("Создатель"), on_delete=models.CASCADE)
+
+
