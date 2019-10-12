@@ -1,4 +1,9 @@
 {% extends "bases/bootstrap-navbar.html" %}
+{% load staticfiles %}
+
+{% block app_css2 %}
+<link rel="stylesheet" media="screen" href='{% static "css/index_main.css" %}'>
+{% endblock app_css2 %}
 
 {% block main_content %}
 

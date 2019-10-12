@@ -19,7 +19,7 @@ body{
   }
 
 .indexBody{
-    background-image: url(../img/mainGradient.jpg);
+    background-color: white;
 }
 /* Для всех белых контейнеров */
 .contBack{
