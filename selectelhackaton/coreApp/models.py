@@ -50,9 +50,9 @@ class Task(models.Model):
 
     created_date = models.DateTimeField(auto_now=True)
 
-    discription = models.TextField()
+    description = models.TextField()
 
-    deadline = models.DateTimeField(null=True, black=True)
+    deadline = models.DateTimeField(null=True, blank=True)
 
     tags = TaggableManager()
 
@@ -65,3 +65,9 @@ class Task(models.Model):
         choices = STATUS_LIST,
         default = 'WH',
     )
+
+class Squad(models.Model):
+
+    id = models.ForeignKey(verbose_name=("id"), on_delete=models.CASCADE)
+    description = models.TextField()
+    team = models.ManyToManyField(User)
