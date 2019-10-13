@@ -64,6 +64,19 @@
                         {% empty %}{% endfor %}
                             
                         </div>
+
+                        <div class="col-md-6" style="margin-top:10x;border-top: 1px solid rgb(222, 226, 230);">
+                        <h6 style="margin-top:10px;">Команды:</h6>
+                        {% for squad in user.user_squads.all %}
+                        <!--Выввод-->
+                        <p> Название : {{  squad  }}</p>
+                        <a href="{{ squad.get_absolute_url }}"> Перейти </a>
+                        
+                        {% empty %}
+                        <p>вы не состоите в команде</p>
+                        {% endfor %}
+                            
+                        </div>
                        
                     </div>
                     
