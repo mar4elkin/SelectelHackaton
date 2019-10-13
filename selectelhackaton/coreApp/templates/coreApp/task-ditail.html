@@ -6,7 +6,7 @@
 {% block content %}
 
     <h1>{{task}}
-        {% if user == task.author %}<a href="{% url 'task_edit' pk=task.pk %}"><i class="fa fa-cogs" aria-hidden="true"></i></a>(Статус:{{task.status}}){% endif %}
+        {% if user == task.author %}<a href="{% url 'task_edit' pk=task.pk %}"><i class="fa fa-cogs" aria-hidden="true"></i></a>(Статус:{{task.get_status_display}}){% endif %}
         
         {% if available %}
             Можно откликнутся 
