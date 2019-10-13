@@ -8,6 +8,7 @@
 
 {% block content %}
   {% bootstrap_messages %}
+  
 
 
 <div class="container">
@@ -39,6 +40,7 @@
             <div class="tab-content p-b-3" style="margin-top:10px;">
                 <div class="tab-pane active" id="profile">
                     <h4 class="m-y-2">{{user.display_name}}</h4>
+                    <span><i class="fas fa-star" id="star1"></i><i class="fas fa-star" id="star2"></i><i class="fas fa-star star3" id="star3"></i><i class="fas fa-star" id="star4"></i><i class="fas fa-star" id="star5"></i></span>
                     <div class="row">
                     
                         <div class="col-md-6" style="margin-top:5px;">
@@ -92,6 +94,17 @@
 <hr>
 
 
+
+<script>
+  var a = 4;
+  var clas = 'star';
+  for (var i = 1; i <= a; i++){
+    clas = clas + i;
+    document.getElementById(clas).style.color = "gold";
+    clas = 'star';
+  }
+
+</script>
   <!--
 
     <div class="row m-y-2">
