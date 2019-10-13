@@ -11,6 +11,8 @@ urlpatterns = [
     # Landing page area
     re_path(r'^$', TemplateView.as_view(template_name='visitor/landing-index.html'), name='landing_index'),
     path('about', TemplateView.as_view(template_name='visitor/landing-about.html'), name='landing_about'),
+    path('partner', TemplateView.as_view(template_name='visitor/partners.html'), name='landing_partners'),
+    path('ability', TemplateView.as_view(template_name='visitor/ability.html'), name='landing_ability'),
     path('contact', TemplateView.as_view(template_name='visitor/contact.html'), name='website_contact'),
     
     # Account management is done by allauth

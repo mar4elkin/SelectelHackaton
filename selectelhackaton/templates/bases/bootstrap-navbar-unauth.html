@@ -1,6 +1,6 @@
 {% load i18n %}
 <nav class="navbar navbar-expand-md navbar-light indexNavbar">
-    <a class="navbar-brand indexBrand" href="#">selectelhackaton</a>
+    <a class="navbar-brand indexBrand" href="{% url 'landing_index' %}">selectelhackaton</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -12,13 +12,13 @@
             <a class="nav-link" href="{% url 'landing_about' %}">О проекте</a>
           </li>
           <li class="nav-item indexNav__element">
-            <a class="nav-link" href="#">Контакты</a>
+            <a class="nav-link" href="{% url 'website_contact' %}">Контакты</a>
           </li>
           <li class="nav-item indexNav__element">
-            <a class="nav-link" href="#">Наши партнеры</a>
+            <a class="nav-link" href="{% url 'landing_partners' %}">Наши партнеры</a>
           </li>
           <li class="nav-item indexNav__element">
-            <a class="nav-link" href="#">Возможности</a>
+            <a class="nav-link" href="{% url 'landing_ability' %}">Возможности</a>
           </li>
           <li class="nav-item indexNav__element">
             <a class="nav-link" href="{% url 'account_login' %}">Войти</a>

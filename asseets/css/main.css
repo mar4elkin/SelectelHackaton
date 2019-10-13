@@ -188,3 +188,16 @@ body{
 
 }
 
+.button__link{
+    color: #fff;
+    font-family: 'Rubik', sans-serif;
+}
+button:hover{
+    cursor: pointer;
+}
+
+button:hover > .button__link{
+    color: #fff;
+    text-decoration: none;
+}
+

@@ -1,0 +1,15 @@
+{% extends "bases/bootstrap-navbar.html" %}
+{% load staticfiles %}
+
+{% block app_css2 %}<link rel="stylesheet" media="screen" href='{% static "css/index_main.css" %}'>{% endblock app_css2 %}
+
+{% block main_content %}
+
+<div class="container">
+Возможности
+
+  <a href="https://github.com/dodo325/demo-allauth-bootstrap-ru" class="btn btn-info btn-lg" role="button">GitHub</a>
+  <a target="_blank" href="mailto:dodo101000101@gmail.com?Subject=Вопрос%20по%20demo" class="btn btn-info btn-lg" >E-mail</a>
+</div>
+
+{% endblock %}
