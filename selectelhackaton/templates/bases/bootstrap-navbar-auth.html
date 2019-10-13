@@ -15,7 +15,7 @@
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <a class="dropdown-item" href="{% url 'landing_index' %}">Главная</a>
     <a class="dropdown-item" href="{% url 'user_home' %}"><i class="fa fa-cog"></i> Профиль</a>
-    {% if user.is_staff %} <a class="dropdown-item" href="/admin"><i class="fa fa-user" aria-hidden="true"></i> Админ манель</a> {% endif %}
+    {% if user.is_staff %} <a class="dropdown-item" href="/admin"><i class="fa fa-user" aria-hidden="true"></i> Админ панель</a> {% endif %}
     <a class="dropdown-item" href="{% url 'account_logout' %}"><i class="fa fa-sign-out"></i>{% trans "Sign Out" %}</a>
   </div>
 </div>
