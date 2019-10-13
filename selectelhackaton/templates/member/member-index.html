@@ -90,6 +90,7 @@
                   <a href="{{ task.get_absolute_url }}" class="list-group-item list-group-item-action flex-column align-items-start ">
                   <div class="d-flex w-100 justify-content-between">
                   <h5 class="mb-1">Название : {{  task  }}</h5>
+                  <h5 class="mb-1">Статус:{{task.get_status_display}}</h5>
                   </div>
                   <p class="mb-1">Срок : {{  task.deadline  }}</p>
                   </a>
