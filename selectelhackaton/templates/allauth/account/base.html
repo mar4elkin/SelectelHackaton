@@ -1,33 +1,43 @@
 {% extends "bases/bootstrap-navbar.html" %}
-
+{% load bootstrap4 i18n %}
+{% load staticfiles i18n %}
 {% load i18n %}
+{% block app_css %}
+<link rel="stylesheet" href='{% static "css/userPage.css" %}'>
+{% endblock app_css %}
 
-{% block main_content %}
 
-<div class=container>
-<h1>Мой аккаунт</h1>
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link {% block account_nav_email %}{% endblock %}" href="{% url 'account_email' %}">{% trans 'E-mail Addresses' %}</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link {% block account_nav_profile_edit %}{% endblock %}" href="{% url 'account_edit_profile' %}">Профиль</a>
-  </li>
-  <li class="nav-item">
-    <a  class="nav-link {% block account_nav_change_password %}{% endblock %}" href="{% url 'account_change_password' %}">{% trans 'Change Password' %}</a>
-  </li>
-  {% url 'socialaccount_connections' as connections_url %}
-  {% if connections_url %}
-  <li class="nav-item">
-    <a class="nav-link {% block account_nav_socialaccount_connections %}{% endblock %}" href="{{ connections_url}}">Подключённые аккаунты</a>
-  </li>
-  {% else %}
-  <li>{% trans "No connections url" %}</li>
-  {% endif %}
-</ul>
-{% block account_content %}
+
+{% block content %}
+    {% bootstrap_messages %}
+<div class="container">
+
+        <div class="col-lg-8 push-lg-4">
+            <ul class="nav nav-tabs">
+            <li class="nav-item">
+               <a class="nav-link  {% block user_home %}{% endblock %}" href="{% url 'user_home' %}">{% trans 'Профиль' %}</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link {% block account_nav_email %}{% endblock %}" href="{% url 'account_email' %}">{% trans 'E-mail Addresses' %}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {% block account_nav_profile_edit %}{% endblock %}" href="{% url 'account_edit_profile' %}">Профиль</a>
+            </li>
+            <li class="nav-item">
+              <a  class="nav-link {% block account_nav_change_password %}{% endblock %}" href="{% url 'account_change_password' %}">{% trans 'Change Password' %}</a>
+            </li>
+            {% url 'socialaccount_connections' as connections_url %}
+            {% if connections_url %}
+            <li class="nav-item">
+              <a class="nav-link {% block account_nav_socialaccount_connections %}{% endblock %}" href="{{ connections_url}}">аккаунты</a>
+            </li>
+            {% else %}
+            <li>{% trans "No connections url" %}</li>
+            {% endif %}
+            
+            </ul>
+          </div>
+          {% block account_content %}
 {% endblock %}
-
-</div>
 
 {% endblock %}
