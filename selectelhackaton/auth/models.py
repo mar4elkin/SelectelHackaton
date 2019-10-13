@@ -145,7 +145,9 @@ class UserProfile(models.Model):
     # b) in this UserProfile model
     # c) in a table of it's own to track multiple pictures, with the
     #    "current" avatar as a foreign key in User or UserProfile.
-    avatar_url = models.CharField(max_length=256, blank=True, null=True)
+    avatar_url = models.CharField(
+        default='https://www.stickpng.com/assets/images/585e4bf3cb11b227491c339a.png',
+        max_length=256, blank=True, null=True)
 
     dob = models.DateField(verbose_name="dob", blank=True, null=True)
     
