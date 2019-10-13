@@ -19,7 +19,33 @@
         {% empty %}
             Их нет...
         {% endfor %}
-    
+        {% if user.is_staff %}
+        <hr>
+<h3>Список заказов:</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Название</th>
+      <th scope="col">Статус</th>
+      <th scope="col">Deadline</th>
+      <th scope="col">Детали</th>
+    </tr>
+  </thead>
+  <tbody>
+   {% for task in squad.tasks.all %}
+    <tr>
+      <th scope="row">{{ task.pk }}</th>
+      <td>{{ task.title }}</td>
+      <td>{{ task.status }}</td>
+      <td>{{ task.deadline }}</td>
+      <td><a href="{{ task.get_absolute_url }}">Перейти</a></td>
+    </tr>
+    {% empty %}{% endfor %}
+  </tbody>
+</table>
+
+{% endif %}    
 {% endblock %}
 
 
