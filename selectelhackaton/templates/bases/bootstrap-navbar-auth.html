@@ -3,9 +3,13 @@
 {% block app_css %}
 <link rel="stylesheet" href='{% static "css/userPage.css" %}'>
 {% endblock app_css %}
+{% block app_css2 %}
+<link rel="stylesheet" media="screen" href='{% static "css/main.css" %}'>
+{% endblock app_css2 %}
+
 
 <nav class="navbar navbar-light bg-light justify-content-between">
-  <a class="navbar-brand" href="{% url 'landing_index' %}">selectelhackaton</a>
+  <a class="navbar-brand" href="{% url 'landing_index' %}">OrderHunter</a>
 <div class="dropdown dropleft">
    {% if user.profile.avatar_url %}<img id="dropdownMenuButton" data-toggle="dropdown" alt="" src="{{user.profile.avatar_url}}" style="float:left;width: 40px; height: 40px;margin-top:0px;margin-right:0px;" class="userLogo"> {% else %}<a id="dropdownMenuButton" data-toggle="dropdown" href="">Профиль</a> {% endif %}
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
