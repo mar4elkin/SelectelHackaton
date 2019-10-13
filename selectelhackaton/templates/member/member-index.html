@@ -107,7 +107,7 @@
               <h3>Команды</h3>
               <br>
 
-              {% for task in user.task_author.all %}
+              {% for squad in user.user_squads.all %}
                   <a href="{{ squad.get_absolute_url }}" class="list-group-item list-group-item-action flex-column align-items-start ">
                   <div class="d-flex w-100 justify-content-between">
                   <h5 class="mb-1">Название : {{  squad  }}</h5>
