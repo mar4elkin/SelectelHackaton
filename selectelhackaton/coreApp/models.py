@@ -50,7 +50,7 @@ class Task(models.Model):
 
     updated_data = models.DateTimeField(auto_now_add=True)
 
-    author = models.ForeignKey(User, verbose_name=("Создатель"), on_delete=models.CASCADE)
+    author = models.ForeignKey(User, verbose_name=("Создатель"), on_delete=models.CASCADE, related_name='task_author')
 
     is_internal = models.BooleanField(
         _('Для внутреннего пользования'), 
