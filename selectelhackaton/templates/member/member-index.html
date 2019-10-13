@@ -2,14 +2,86 @@
 {% load bootstrap4 i18n %}
 {% load staticfiles i18n %}
 
-{% block app_css %}
-<link rel="stylesheet" href='{% static "css/userPage.css" %}'>
-{% endblock app_css %}
 
-{% block title %}{% trans "Welcome" %}{% endblock %}
+
+{% block title %}{% trans "Профиль" %}{% endblock %}
 
 {% block content %}
   {% bootstrap_messages %}
+
+
+<div class="container">
+
+        <div class="col-lg-8 push-lg-4">
+            <ul class="nav nav-tabs">
+            <li class="nav-item">
+               <a class="nav-link active {% block user_home %}{% endblock %}" href="{% url 'user_home' %}">{% trans 'Профиль' %}</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link {% block account_nav_email %}{% endblock %}" href="{% url 'account_email' %}">{% trans 'E-mail Addresses' %}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {% block account_nav_profile_edit %}{% endblock %}" href="{% url 'account_edit_profile' %}">Профиль</a>
+            </li>
+            <li class="nav-item">
+              <a  class="nav-link {% block account_nav_change_password %}{% endblock %}" href="{% url 'account_change_password' %}">{% trans 'Change Password' %}</a>
+            </li>
+            {% url 'socialaccount_connections' as connections_url %}
+            {% if connections_url %}
+            <li class="nav-item">
+              <a class="nav-link {% block account_nav_socialaccount_connections %}{% endblock %}" href="{{ connections_url}}">аккаунты</a>
+            </li>
+            {% else %}
+            <li>{% trans "No connections url" %}</li>
+            {% endif %}
+
+            </ul>
+            <div class="tab-content p-b-3" style="margin-top:10px;">
+                <div class="tab-pane active" id="profile">
+                    <h4 class="m-y-2">{{user.display_name}}</h4>
+                    <div class="row">
+                    
+                        <div class="col-md-6" style="margin-top:5px;">
+                          <h6>ФИО:</h6>
+                            <p>
+                               {{user.last_name}} {{user.first_name}} 
+                            </p>
+                            <h6>Почта:</h6>
+                            <p>{{user.email}}</p>
+                              <h6>Статус:</h6>
+                            <p>
+                        {% if user.is_entity %}Юр. Лицо{% else %}Физ. лицо{% endif %}
+                            </p>
+                        </div>
+                        {% if user.profile.avatar_url %}<img alt="" src="{{user.profile.avatar_url}}" style="float:left;width: 180px; height: 180px;margin-top:0px;" class="userLogo"> {% endif %}
+                        <div class="col-md-6">
+                        
+
+                            
+                        </div>
+                       
+                    </div>
+                    
+                    <!--/row-->
+                </div>
+                
+                </div>
+                
+            </div>           
+        </div>      
+    </div>   
+</div>
+<hr>
+
+
+  <!--
+
+    <div class="row m-y-2">
+        <div class="col-lg-4 pull-lg-8 text-xs-center">
+            <img src="//placehold.it/150" class="m-x-auto img-fluid img-circle" alt="avatar">
+            </label>
+        </div>
+
   <div class="d-flex justify-content-around">
 
 
@@ -33,78 +105,6 @@
 </div>
 
 
-<div>
-
-<div class="card" style="width: 18rem;">
-  <div class="card-header">
-    Заказы в процессе 
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Vestibulum at eros</li>
-    <li class="list-group-item">Vestibulum at eros</li>
-  </ul>
-</div>
-
-
-<div class="card" style="width: 18rem;margin-top:15px;">
-  <div class="card-header">
-    Завершенные заказы 
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Vestibulum at eros</li>
-    <li class="list-group-item">Vestibulum at eros</li>
-  </ul>
-</div>
-</div>
-</div>
-  <!--
-
-  <div class="container">
-  <div class="row align-items-start">
-    <div class=".col-6 .col-md-4" style="width:250px;">
-      <div class="mainInformation">
-          <div class="row">
-              <div class="col">
-                {% if user.profile.avatar_url %}<img alt="" src="{{user.profile.avatar_url}}" style="width: 80px; height: 80px;" class="userLogo">
-                {% else %}No picture available yet.{% endif %}
-              </div>
-            <div class="col"><span style="font-size: normal;" class="userName">{{user.display_name}}</span><br>
-                           {% if user.is_entity %}
-                <span class="userStatus">Статус: {{user.is_entity}}</span>
-              {% else %} <span style="" class="userStatus">Статус: Физ. лицо</span> {% endif %}
-            </div>
-            <div class="col"></div>
-            <div class="col"></div>
-          </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class=".col-6 .col-md-4" style="margin-top:40px">
-      <div class="mainInformation">
-          <div class="row">
-            <div class="col"><strong>Имя:</strong></div>
-            <div class="col"><strong>{{user.first_name}}</strong></div>
-            <div class="col"></div>
-          </div>
-          <div class="row">
-            <div class="col"><strong>Фамилия:</strong></div>
-            <div class="col"><strong>{{user.last_name}}</strong></div>
-            <div class="col"></div>
-          </div>
-          <div class="row">
-            <div class="col"><strong>Email:</strong></div>
-            <div class="col"><strong>{{user.email}}</strong></div>
-            <div class="col"></div>
-          </div>
-      </div>
-    </div>
-  </div>
 
 
   
