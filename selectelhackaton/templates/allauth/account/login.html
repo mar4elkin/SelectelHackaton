@@ -1,5 +1,6 @@
 {% extends "bases/bootstrap-auth.html" %}
 
+
 {% load i18n %}
 {% load bootstrap4 %}
 {% load account socialaccount %}
@@ -35,5 +36,7 @@
         </div>  
     </form>
     <div class="hint-text small">{% trans 'Нет аккаунта?' %} <a href="{% url 'account_signup' %}" class="text-success">{% trans 'Зарегистрируйтесть сейчас!' %}</a></div>
-</div>                           
+</div>
+{% block footer %}
+{% endblock %}                           
 {% endblock %}
