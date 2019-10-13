@@ -61,6 +61,7 @@ def add_task(request):
 
     return render(request, 'coreApp/edit/task-add.html', context)
 
+@csrf_protect
 @login_required
 def squad_ditail(request, pk):
     squad = get_object_or_404(Squad, pk=pk)
@@ -89,7 +90,7 @@ def squad_ditail(request, pk):
             if data['event'] == 'change_status':
                 task.status = data['target_pk']
                 task.save()
-            
+
             if data['event'] == 'get_task_info':
                 response= {
                     'title':str(task),
@@ -137,20 +138,21 @@ def task_edit(request, pk):
 
     if request.method == "POST":
         data = request.POST
+        print(dict(data))
+        if 'event' in data:
+            if data['event'] == 'del_task':
+                task.delete()
+                return redirect(reverse("user_home"))
         context['form'] = MainTaskForm(data)
 
-
-
-        print(dict(data))
         # # data validate
 
-        task = Task.objects.create(
-            author = request.user, 
-            title=data['title'],
-            deadline=data['deadline'],
+        task.author = request.user 
+        task.title=data['title']
+        task.deadline=data['deadline']
     # deadline = forms.DateTimeField()
-            description = data['description'],
-        )
+        task.description = data['description']
+        task.tags.clear()
         task.tags.add(*data['tags'].split(','))
         task.save()
         return redirect(task)
