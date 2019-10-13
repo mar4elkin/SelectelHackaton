@@ -19,13 +19,7 @@ body{
   }
 
 .indexBody{
-    background-image: url(../img/mainGradient.jpg);
-}
-/* Для всех белых контейнеров */
-.contBack{
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 30px;
+    background-color: white;
 }
 
 /* navbar*/
@@ -35,6 +29,8 @@ body{
     font-family: 'Source Sans Pro', sans-serif;
     margin-top: 40px;
     margin-bottom: 50px;
+    border-bottom: 4px solid white;
+    border-radius: 0px 0px 20px 20px;
 }
 .indexBrand{
     font-size: 30px;
@@ -52,19 +48,29 @@ body{
     border-radius: 10px;
 }
 .about__title{
-    font-size:50px;
-    width: 400px;
-    font-family: 'Rubik Mono One', sans-serif;
+    font-size:40px;
+    width: 500px;
+    font-family: 'Russo One', sans-serif;
 
 }
 .about__text{
-    font-size: 30px;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    color: grey;
+    width: 500px;
+    font-family: 'Rubik', sans-serif;
 }
-.mainButtonContainer{
-    text-align: center;
-    margin-top: 60px;
-    margin-bottom: 40px;
+.about__button{
+    width: 130px;
+    height: 50px;
+    border-radius: 25px;
+    color: #fff;
+    background-color: #4285f4;
+    border: 1px #4285f4 solid;
+}
+.mainImg{
+    width: 540px;
+    height: 463px;
+    margin-left: 60px;
 }
 
 .mainStart{
@@ -82,6 +88,11 @@ body{
 }
 
 /* Advantages */
+
+.ourAdvantages{
+    background-color: #F8F9FA;
+}
+
 .advantages{
     text-align: center;
 
@@ -89,7 +100,7 @@ body{
 }
 .advantages__title{
     font-size: 40px;
-    font-family: 'Rubik Mono One', sans-serif;
+    font-family: 'Russo One', sans-serif;
     margin-bottom: 40px;
     margin-top: 30px;
 
@@ -97,7 +108,96 @@ body{
 .infoGroups{
     text-align: center;
     font-size: 20px;
+    background-color: #fff;
+    height: 320px;
+    padding: 20px;
+    padding-top: 40px;
+    margin-bottom: 20px;
 }
 .infoGroups__title{
-    font-size: 30px;
+    font-size: 25px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 700;
+    margin-top: 0;
 }
+
+.infoGroups__text{
+    font-size: 18px;
+    color: grey;
+    font-family: 'Rubik', sans-serif;
+}
+
+.icon{
+    font-size: 50px;
+}
+
+/* footer */
+.footListElement{
+    text-decoration: none;
+    display: inline;
+    margin-right: 20px;
+}
+.footList{
+    text-align: center;
+}
+
+.footListElement > a {
+    color:grey;
+    text-decoration: none;
+}
+
+.partners__list{
+
+}
+.partners__list__element{
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.partners__list__element__title{
+    font-family: 'Rubik', sans-serif;
+    margin-bottom: 0;
+}
+
+.partners__list__element__text{
+    font-family: 'Rubik', sans-serif;
+    font-size: 15px;
+    color: grey;
+    width: 300px;
+}
+.partner__img{
+    width: 420px;
+    height: 474px;
+}
+
+.glavButtonContainer{
+    text-align: center;
+
+}
+
+.glavButton{
+    width: 50%;
+    height: 100px;
+    margin-top: 40px;
+    font-family: 'Rubik', sans-serif;
+    font-size: 30px;
+    color: #fff;
+    background-color: #4285f4;
+    border: 1px #4285f4 solid;
+    border-radius: 10px;
+
+}
+
+.button__link{
+    color: #fff;
+    font-family: 'Rubik', sans-serif;
+}
+button:hover{
+    cursor: pointer;
+}
+
+button:hover > .button__link{
+    color: #fff;
+    text-decoration: none;
+}
+
