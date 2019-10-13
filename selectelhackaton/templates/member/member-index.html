@@ -54,9 +54,14 @@
                             </p>
                         </div>
                         {% if user.profile.avatar_url %}<img alt="" src="{{user.profile.avatar_url}}" style="float:left;width: 180px; height: 180px;margin-top:0px;" class="userLogo"> {% endif %}
-                        <div class="col-md-6">
-                        
-
+                        <div class="col-md-6" style="margin-top:10x;border-top: 1px solid rgb(222, 226, 230);">
+                        <h6 style="margin-top:10px;">Заказы:</h6>
+                        {% for task in user.task_author.all %}
+                        <p> Название : {{  task  }}</p>
+                        <p> Срок : {{  task.deadline  }}</p>
+                        <a href="{{ task.get_absolute_url }}"> Перейти </a>
+                        <p style="border-bottom:1px solid rgb(222, 226, 230);"></p>
+                        {% empty %}{% endfor %}
                             
                         </div>
                        
