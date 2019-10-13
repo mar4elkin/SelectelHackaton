@@ -5,7 +5,8 @@
   -padding: 10px;
   margin-bottom: 6px;
   display: block;
-  width: 150px;
+  width: 280px;
+  text-align: center;
   overflow: hidden;
   rem-font-size: 1.2em;
 }
