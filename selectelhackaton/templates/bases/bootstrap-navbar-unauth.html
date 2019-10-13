@@ -1,6 +1,10 @@
 {% load i18n %}
-<nav class="navbar navbar-expand-md navbar-light indexNavbar">
-    <a class="navbar-brand indexBrand" href="{% url 'landing_index' %}">OrderHunter</a>
+{% load staticfiles i18n %}
+{% block app_css %}
+<link rel="stylesheet" href='{% static "css/userPage.css" %}'>
+{% endblock app_css %}
+<nav id="nav_bar_auth" class="navbar navbar-expand-md navbar-light indexNavbar">
+    <a id="name_auth"class="navbar-brand indexBrand" href="{% url 'landing_index' %}">OrderHunter</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
