@@ -18,6 +18,22 @@ from selectelhackaton.coreApp.forms import MainTaskForm
 from taggit.models import Tag, TaggedItem
 
 @login_required
+def list_task(request):
+    if not request.user.is_staff:
+        return HttpResponseNotFound
+    task_list = []
+    for task in Task.objects.all():
+        if task.is_available(request.user):
+            task_list.append(task)
+
+    context = {
+        'task_list':task_list
+    }
+
+
+    return render(request, 'coreApp/tasks-list.html', context)
+
+@login_required
 def add_task(request):
     context = dict()
     context['form'] = MainTaskForm()
