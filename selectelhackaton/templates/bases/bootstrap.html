@@ -50,10 +50,11 @@
 {% endblock main_content %}
 {% block footer %}
 
-<footer class="footer page-footer font-small">
+
+
+    <div id="footer"> 
     
-  <div class="container-fluid">
-    <ul class="footList">
+      <ul class="footList">
 
       <li class="footListElement">
           <a class="" href="{% url 'landing_about' %}">О проекте</a>
@@ -69,8 +70,10 @@
         </li>
       </li>
     </ul>
-  </div>
-</footer>
+
+    
+    </div>
+
 
 {% endblock footer%}
 

@@ -2,6 +2,11 @@
 -------------------------------------------------- */
 /* standarts */
 
+* {
+	margin: 0;
+	padding: 0;
+}
+
 body{
     font-family: 'Open Sans', sans-serif;
     background-color:rgb(48, 46, 56);
@@ -162,20 +167,6 @@ body{
 }
 
 /* footer */
-.footListElement{
-    text-decoration: none;
-    display: inline;
-    margin-right: 20px;
-}
-.footList{
-    text-align: center;
-}
-
-.footListElement > a {
-    color:grey;
-    text-decoration: none;
-}
-
 .partners__list{
 
 }
@@ -260,4 +251,14 @@ button:hover > .button__link{
     list-style-type: none;
     font-size: 20px;
     font-family: 'Rubik', sans-serif;
+}
+
+
+#footer { 
+    height: 50px; 
+    background: #f7f7f7; 
+    position: block; 
+    margin-top:20%;
+    bottom: 0; 
+    width: 100%; 
 }
