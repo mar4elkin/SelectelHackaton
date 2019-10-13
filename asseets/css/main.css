@@ -149,6 +149,11 @@ body{
     padding-top: 40px;
     margin-bottom: 20px;
 }
+
+.infoGroups:hover{
+    box-shadow: 0 0 10px 10px rgba(221, 221, 221, 1);
+    transition: all 0.5s;
+}
 .infoGroups__title{
     font-size: 25px;
     font-family: 'Rubik', sans-serif;
@@ -215,6 +220,9 @@ body{
 }
 button:hover{
     cursor: pointer;
+    background-color: #e73c7e;
+    border: 1px #e73c7e solid;
+    transition: all 0.3s;
 }
 
 button:hover > .button__link{
