@@ -267,3 +267,12 @@ button:hover > .button__link{
     width: 50%;
     height: 50%;
 }
+.partners__title{
+    font-family: 'Rubik', sans-serif;
+}
+
+.partners__text{
+    font-family: 'Rubik', sans-serif;
+    color: grey;
+}
+
