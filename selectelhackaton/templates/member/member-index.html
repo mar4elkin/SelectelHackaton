@@ -32,6 +32,10 @@
             <li>{% trans "No connections url" %}</li>
             {% endif %}
 
+            <li class="nav-item">
+              <a class="nav-link {% block account_nav_create_query %}{% endblock %}" href="{% url 'add_task' %}">Создать запрос</a>
+            </li>
+
             </ul>
 
             <div class="row">
