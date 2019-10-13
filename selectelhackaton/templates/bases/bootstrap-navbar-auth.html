@@ -7,7 +7,7 @@
 <nav class="navbar navbar-light bg-light justify-content-between">
   <a class="navbar-brand" href="{% url 'landing_index' %}">selectelhackaton</a>
 <div class="dropdown dropleft">
-   {% if user.profile.avatar_url %}<img id="dropdownMenuButton" data-toggle="dropdown" alt="" src="{{user.profile.avatar_url}}" style="float:left;width: 40px; height: 40px;margin-top:0px;margin-right:0px;" class="userLogo"> {% endif %}
+   {% if user.profile.avatar_url %}<img id="dropdownMenuButton" data-toggle="dropdown" alt="" src="{{user.profile.avatar_url}}" style="float:left;width: 40px; height: 40px;margin-top:0px;margin-right:0px;" class="userLogo"> {% else %}<a id="dropdownMenuButton" data-toggle="dropdown" href="">Профиль</a> {% endif %}
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <a class="dropdown-item" href="{% url 'landing_index' %}">Главная</a>
     <a class="dropdown-item" href="{% url 'user_home' %}"><i class="fa fa-cog"></i> Профиль</a>
