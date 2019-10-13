@@ -147,7 +147,7 @@ class UserProfile(models.Model):
     #    "current" avatar as a foreign key in User or UserProfile.
     avatar_url = models.CharField(
         default='https://www.stickpng.com/assets/images/585e4bf3cb11b227491c339a.png',
-        max_length=25)
+        max_length=256, blank=True, null=True)
 
     dob = models.DateField(verbose_name="dob", blank=True, null=True)
     
