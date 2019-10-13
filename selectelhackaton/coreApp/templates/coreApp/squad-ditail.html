@@ -19,34 +19,133 @@
         {% empty %}
             Их нет...
         {% endfor %}
-        {% if user.is_staff %}
         <hr>
-<h3>Список заказов:</h3>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Название</th>
-      <th scope="col">Статус</th>
-      <th scope="col">Deadline</th>
-      <th scope="col">Детали</th>
-    </tr>
-  </thead>
-  <tbody>
-   {% for task in squad.tasks.all %}
-    <tr>
-      <th scope="row">{{ task.pk }}</th>
-      <td>{{ task.title }}</td>
-      <td>{{ task.status }}</td>
-      <td>{{ task.deadline }}</td>
-      <td><a href="{{ task.get_absolute_url }}">Перейти</a></td>
-    </tr>
-    {% empty %}{% endfor %}
-  </tbody>
-</table>
+    
+    {% if user in squad.teammates.all %}
+            <h3>Доска задач команды</h3>
 
-{% endif %}    
+            <div  id="myKanban"></div>
+
+            <div id='task_detail' hidden='true' class=''>
+                <hr>
+                <h2 class='text-center' id="taskTitle">Node.tiitle</h2>
+                <a id="taskDetailButton" target="_blank" href='' class="btn btn-secondary float-right">Посмотреть Задачу</a>
+                <div id="text_description">
+
+                </div>
+            </div>
+        {% else %}     
+        {% if user.is_staff %}
+            <h3>Список заказов:</h3>
+            <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Название</th>
+                    <th scope="col">Статус</th>
+                    <th scope="col">Deadline</th>
+                    <th scope="col">Детали</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for task in squad.tasks.all %}
+                <tr>
+                    <th scope="row">{{ task.pk }}</th>
+                    <td>{{ task.title }}</td>
+                    <td>{{ task.status }}</td>
+                    <td>{{ task.deadline }}</td>
+                    <td><a href="{{ task.get_absolute_url }}">Перейти</a></td>
+                </tr>
+                {% empty %}{% endfor %}
+            </tbody>
+            </table>
+        {% endif %}
+    {% endif %}
 {% endblock %}
 
+{% block app_js %}
+<script src="{% static 'js/jkanban.min.js' %}"></script>
+{% include 'utils/csrf-token.html' %}
+
+{% if user in squad.teammates.all %}<script>
+    var correct_task = null;
+    var kanban = new jKanban({
+        element:'#myKanban',
+
+        dropEl: function (el, target, source, sibling) {
+            el_pk = el.getAttribute('data-pk');
+            source_pk = source.parentElement.getAttribute('data-id').substring(2);
+            target_pk = target.parentElement.getAttribute('data-id').substring(2);
+            
+           
+
+            if(source_pk == target_pk){
+                return;
+            }
+            $.post(
+                "#",
+                {
+                    'event':'change_status',
+                    'task_pk':el_pk,
+                    'source_pk':source_pk,
+                    'target_pk':target_pk,
+                },
+                function(data){
+                    //console.log(data);
+                }
+            );
+        },
+        click: function (el) {
+            $.post(
+                    "#",
+                    {
+                        'event':'get_task_info',
+                        'task_pk':el.getAttribute('data-pk'),
+                    },
+                    onAjaxSuccessGetBlock
+                );
+            function renderBlockNode(task){
+                document.getElementById('task_detail').hidden = false;
+                document.getElementById('text_description').innerHTML = task.description;
+                document.getElementById('taskTitle').innerHTML = task.title;
+                document.getElementById('taskDetailButton').href = task.url;
+            }
+            function onAjaxSuccessGetBlock(data) {
+                task = data;
+                console.log(data)
+                //task.title = el.innerHTML;
+                //task.pk = el.getAttribute('data-pk');
+                renderBlockNode(task);
+
+                correct_task = task;
+            }
+
+        },
+
+        boards  :[
+                {% for board_slug, board_name, tasks in boards_list %}
+                    {
+                        'id' : 'b-{{board_slug}}',
+                        'title'  : '{{board_name}}',
+                        "item"  : [
+                            {% for task in tasks %}
+                            {
+                                "id"      : "n-{{task.pk}}",
+                                "title"   : "{{task}}",
+                                "pk"      : "{{task.pk}}",
+                            },
+                            {% endfor %}
+                            
+                        ]
+                    },
+                {% endfor %}
+            ]
+    })
+
+</script>{% endif %}
+{% endblock app_js %}
 
 
+{% block app_css2 %}
+<link href="{% static 'css/jkanban.min.css' %}" rel="stylesheet" type="text/css">
+{% endblock app_css2 %}

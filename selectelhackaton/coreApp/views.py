@@ -62,9 +62,7 @@ def add_task(request):
     return render(request, 'coreApp/edit/task-add.html', context)
 
 @login_required
-@csrf_protect # - for POST
-def squad_board(request, pk):
-    
+def squad_ditail(request, pk):
     squad = get_object_or_404(Squad, pk=pk)
     
     boards_list = []
@@ -102,23 +100,6 @@ def squad_board(request, pk):
                     # 'weight':str(bnode.weight)
                     }
                 return JsonResponse(response)
-
-
-    return render(request, 'coreApp/squad-board.html', context)
-
-@login_required
-def squad_ditail(request, pk):
-    squad = get_object_or_404(Squad, pk=pk)
-    
-    context= {
-        'squad': squad,
-
-    }   
-
-    if request.method == "POST":
-        data = dict(request.POST)
-        print(data)
-
     return render(request, 'coreApp/squad-ditail.html', context)
 
 @login_required
