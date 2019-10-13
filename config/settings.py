@@ -23,7 +23,7 @@ DOCKER = bool(environ.get('DOCKER', default=0))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'av000j2_xf5f3bm6+!l)ihidw7jh1^0*5gawr==v1h_q*fwm05'
+SECRET_KEY = 'yr64_com$e-dp^dlwhrln0t6e78z-(fvht$%$rw^x1eb!w7_jf'
 
 ALLOWED_HOSTS = ['*']
 
@@ -44,7 +44,7 @@ INSTALLED_APPS = (
 
 
 
-    # 'allauth.socialaccount.providers.google',  # enabled by configure 
+    'allauth.socialaccount.providers.google',  # enabled by configure 
 
     'allauth.socialaccount.providers.vk',  # enabled by configure 
 

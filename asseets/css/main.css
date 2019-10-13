@@ -218,3 +218,16 @@ button:hover > .button__link{
     margin-bottom: 40px;
 }
 
+/* Contacts */
+
+.contact__title{
+    font-family: 'Rubik', sans-serif;
+}
+.contact__titleMini{
+    font-family: 'Rubik', sans-serif;
+}
+.contact__list{
+    list-style-type: none;
+    font-size: 20px;
+    font-family: 'Rubik', sans-serif;
+}
