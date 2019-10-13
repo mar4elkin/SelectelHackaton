@@ -100,7 +100,7 @@ class Task(models.Model):
             return False
 
         for squad in squads:
-            teammates = squad.teammates
+            teammates = squad.teammates.all()
             for teammate in teammates:
                 if teammate == self.author:
                     return False
