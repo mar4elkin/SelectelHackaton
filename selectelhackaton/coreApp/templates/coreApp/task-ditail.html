@@ -1,16 +1,31 @@
 {% extends "bases/bootstrap-navbar.html" %}
 {% load bootstrap4 i18n staticfiles %}
 
-{% block title %}{% trans "Welcome" %}{% endblock %}
+{% block title %}Задача: {{task}}{% endblock %}
 
 {% block content %}
 
-    <h1>{{task}}</h1>
-
-    {{task.tags.all}}
-    <p></p>
-
-    <button type="button" class="btn btn-secondary" onclick="sendFunction()">Allways YES</button>
+    <h1>{{task}}
+        {% if user == task.author %}<a href="{% url 'task_edit' pk=task.pk %}"><i class="fa fa-cogs" aria-hidden="true"></i></a>{% endif %}
+        
+        {% if available %}
+            Можно откликнутся 
+        {% endif %}
+            
+    </h1>
+    <hr>
+    <h3>Описание:</h3>
+    {{task.description|safe}}
+    <hr>
+    <h3>Крайний срок: {{task.deadline}}</h3>
+    <hr>
+    <p>
+        {% for tag in task.tags.all %}
+            {{tag}},
+        {% empty %}
+            
+        {% endfor %}
+    </p>
 {% endblock %}
 
 

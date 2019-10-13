@@ -21,7 +21,7 @@ from taggit.models import Tag, TaggedItem
 def add_task(request):
     context = dict()
     context['form'] = MainTaskForm()
-    context['tag_name'] = Tag.objects.all()
+    context['tag_list'] = Tag.objects.all()
 
     if request.method == "POST":
         data = request.POST
@@ -39,23 +39,123 @@ def add_task(request):
     # deadline = forms.DateTimeField()
             description = data['description'],
         )
-        task.tags.add(*data['tags'])
+        task.tags.add(*data['tags'].split(','))
         task.save()
         return redirect(task)
 
     return render(request, 'coreApp/edit/task-add.html', context)
 
 @login_required
-# @csrf_protect # - for POST
-def task_ditail(request, pk):
-    task = get_object_or_404(Task, pk=pk)
+@csrf_protect # - for POST
+def squad_board(request, pk):
+    
+    squad = get_object_or_404(Squad, pk=pk)
+    
+    boards_list = []
+    for board_slug, board_name in Task.STATUS_LIST:
+        boards_list.append([
+            board_slug,
+            board_name,
+            squad.tasks.filter(status=board_slug)
+        ])
+    
 
     context= {
-        'task': task
-    }
+        'squad':squad,
+        'boards_list':boards_list,
+    }   
+
+    if request.method == "POST":
+        data = request.POST
+        print()
+        
+
+        if 'event' in data:
+            task = Task.objects.get(pk=int(data['task_pk']))
+            if data['event'] == 'change_status':
+                task.status = data['target_pk']
+                task.save()
+            
+            if data['event'] == 'get_task_info':
+                response= {
+                    'title':str(task),
+                    'pk':str(task.pk),
+                    'description':task.description,
+                    'url':str(task.get_absolute_url()),
+                    # 'is_normal':str(bnode.is_normal),
+                    # 'weight':str(bnode.weight)
+                    }
+                return JsonResponse(response)
+
+
+    return render(request, 'coreApp/squad-board.html', context)
+
+@login_required
+def squad_ditail(request, pk):
+    squad = get_object_or_404(Squad, pk=pk)
+    
+    context= {
+        'squad': squad,
+
+    }   
+
+    if request.method == "POST":
+        data = dict(request.POST)
+        print(data)
+
+    return render(request, 'coreApp/squad-ditail.html', context)
+
+@login_required
+# @csrf_protect # - for POST
+def task_ditail(request, pk):
+    
+    task = get_object_or_404(Task, pk=pk)
+    
+    context= {
+        'task': task,
+        'available':task.is_available(request.user)
+    }   
 
     if request.method == "POST":
         data = dict(request.POST)
         print(data)
 
     return render(request, 'coreApp/task-ditail.html', context)
+
+@login_required
+def task_edit(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+
+    if request.user != task.author:
+        return HttpResponseNotFound()
+
+    context = dict()
+    context['form'] = MainTaskForm(initial={ 
+        'title': task.title,
+        'deadline': task.deadline,
+        'description': task.description
+    })
+    context['tags'] = task.tags_list
+    context['tag_list'] = Tag.objects.all()
+
+    if request.method == "POST":
+        data = request.POST
+        context['form'] = MainTaskForm(data)
+
+
+
+        print(dict(data))
+        # # data validate
+
+        task = Task.objects.create(
+            author = request.user, 
+            title=data['title'],
+            deadline=data['deadline'],
+    # deadline = forms.DateTimeField()
+            description = data['description'],
+        )
+        task.tags.add(*data['tags'].split(','))
+        task.save()
+        return redirect(task)
+
+    return render(request, 'coreApp/edit/task-edit.html', context)

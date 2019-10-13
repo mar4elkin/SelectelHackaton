@@ -1,10 +1,10 @@
 {% extends "bases/bootstrap-navbar.html" %}
 {% load bootstrap4 i18n staticfiles %}
 
-{% block title %}Создать Задачу{% endblock %}
+{% block title %}Редактировать задачу{% endblock %}
 
 {% block content %}
-<h1>Создать Задачу</h1>
+<h1>Редактировать задачу</h1>
 
 <form action="" method="post" id='addTask'>
         {% csrf_token %}
@@ -17,6 +17,7 @@
             data-min-length='1'
             multiple='multiple'
             list='tags_list'
+            value='{{tags}}'
             id='mytags'
             name='tags'>
         
@@ -40,6 +41,10 @@
 <script src="{% static 'js/jquery.flexdatalist.min.js' %}"></script>
 {% include 'utils/csrf-token.html' %}
 <script>
+    if ($('#id_deadline').attr("value") != "01.01.2000"){
+        var mydate = $('#id_deadline').attr("value").split('.');
+        $('#id_deadline').val(mydate[2]+"-"+mydate[1]+"-"+mydate["0"])
+    }
     $('.flexdatalist').flexdatalist({
         minLength: 1
     });
@@ -58,6 +63,6 @@
 {% endblock app_js %}
 
 
-{% block app_css2 %}
+{% block head_css %}
 <link href="{% static 'css/jquery.flexdatalist.min.css' %}" rel="stylesheet" type="text/css">
-{% endblock app_css2 %}
+{% endblock head_css %}

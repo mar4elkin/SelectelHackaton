@@ -1,0 +1,38 @@
+{% extends "bases/bootstrap-navbar.html" %}
+{% load bootstrap4 i18n staticfiles %}
+
+{% block title %}Команда: {{squad}}{% endblock %}
+
+{% block content %}
+
+    <h1>{{squad}}
+            
+    </h1>
+    <hr>
+    <h3>Описание:</h3>
+    {{squad.description|safe}}
+    <hr>
+    <h3>Участники:</h3>
+    
+        {% for teammate in squad.teammates.all %}
+            <p><a href="{{teammate.get_absolute_url}}}">{{teammate}}</a></p>        
+        {% empty %}
+            Их нет...
+        {% endfor %}
+    
+{% endblock %}
+
+
+
+{% block app_js %}
+<script src="{% static 'js/jquery.flexdatalist.min.js' %}"></script>
+{% include 'utils/csrf-token.html' %}
+<script>
+
+</script>
+{% endblock app_js %}
+
+
+{% block head_css %}
+<link href="{% static 'css/jquery.flexdatalist.min.css' %}" rel="stylesheet" type="text/css">
+{% endblock head_css %}

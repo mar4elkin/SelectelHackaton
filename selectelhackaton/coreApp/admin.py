@@ -49,6 +49,6 @@ class SquadAdmin(ImportExportModelAdmin):
 
     list_display = ('id','description','teammate_str')
     list_filter = ('id',)
-    search_fields = ['id',]
+    search_fields = ['id','description',]
 
     ordering = ('id',)
