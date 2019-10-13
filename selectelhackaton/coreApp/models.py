@@ -125,8 +125,14 @@ class Squad(models.Model):
             )
     
     def __str__(self):
-        """Unicode representation of Order."""
+        """Unicode representation of Squad."""
         return str(self.id)
     
     def get_absolute_url(self):
         return reverse('squad_ditail', args=[str(self.id)])
+    
+    class Meta:
+        """Meta definition for Squad."""
+
+        verbose_name = _('Команда')
+        verbose_name_plural = _('Команды')
