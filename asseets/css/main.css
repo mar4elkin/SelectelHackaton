@@ -262,3 +262,8 @@ button:hover > .button__link{
     bottom: 0; 
     width: 100%; 
 }
+
+.auth__img{
+    width: 50%;
+    height: 50%;
+}
