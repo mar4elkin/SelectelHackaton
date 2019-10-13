@@ -30,5 +30,5 @@ urlpatterns = [
     path('core/', include('selectelhackaton.coreApp.urls')), 
 
     # Usual Django admin
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name='adminp'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
