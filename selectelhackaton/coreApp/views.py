@@ -66,8 +66,27 @@ def squad_board(request, pk):
     }   
 
     if request.method == "POST":
-        data = dict(request.POST)
-        print(data)
+        data = request.POST
+        print()
+        
+
+        if 'event' in data:
+            task = Task.objects.get(pk=int(data['task_pk']))
+            if data['event'] == 'change_status':
+                task.status = data['target_pk']
+                task.save()
+            
+            if data['event'] == 'get_task_info':
+                response= {
+                    'title':str(task),
+                    'pk':str(task.pk),
+                    'description':task.description,
+                    'url':str(task.get_absolute_url()),
+                    # 'is_normal':str(bnode.is_normal),
+                    # 'weight':str(bnode.weight)
+                    }
+                return JsonResponse(response)
+
 
     return render(request, 'coreApp/squad-board.html', context)
 
