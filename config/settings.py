@@ -42,10 +42,6 @@ INSTALLED_APPS = (
     'allauth.account',
     'allauth.socialaccount',
 
-
-
-    'allauth.socialaccount.providers.google',  # enabled by configure 
-
     'allauth.socialaccount.providers.vk',  # enabled by configure 
 
     'allauth.socialaccount.providers.github',  # enabled by configure 
