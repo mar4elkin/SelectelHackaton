@@ -9,19 +9,16 @@
 {% block content %}
   {% bootstrap_messages %}
 
-
 <div class="container">
 
-        <div class="col-lg-8 push-lg-4">
+        <div class="col">
+
             <ul class="nav nav-tabs">
             <li class="nav-item">
                <a class="nav-link active {% block user_home %}{% endblock %}" href="{% url 'user_home' %}">{% trans 'Профиль' %}</a>
             </li>
             <li class="nav-item">
-               <a class="nav-link {% block account_nav_email %}{% endblock %}" href="{% url 'account_email' %}">{% trans 'E-mail Addresses' %}</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link {% block account_nav_profile_edit %}{% endblock %}" href="{% url 'account_edit_profile' %}">Профиль</a>
+              <a class="nav-link {% block account_nav_profile_edit %}{% endblock %}" href="{% url 'account_edit_profile' %}">Редактировать профиль</a>
             </li>
             <li class="nav-item">
               <a  class="nav-link {% block account_nav_change_password %}{% endblock %}" href="{% url 'account_change_password' %}">{% trans 'Change Password' %}</a>
@@ -29,67 +26,77 @@
             {% url 'socialaccount_connections' as connections_url %}
             {% if connections_url %}
             <li class="nav-item">
-              <a class="nav-link {% block account_nav_socialaccount_connections %}{% endblock %}" href="{{ connections_url}}">аккаунты</a>
+              <a class="nav-link {% block account_nav_socialaccount_connections %}{% endblock %}" href="{{ connections_url}}">Социальные сети</a>
             </li>
             {% else %}
             <li>{% trans "No connections url" %}</li>
             {% endif %}
 
             </ul>
-            <div class="tab-content p-b-3" style="margin-top:10px;">
-                <div class="tab-pane active" id="profile">
-                    <h4 class="m-y-2">{{user.display_name}}</h4>
-                    <div class="row">
-                    
-                        <div class="col-md-6" style="margin-top:5px;">
-                          <h6>ФИО:</h6>
-                            <p>
-                               {{user.last_name}} {{user.first_name}} 
-                            </p>
-                            <h6>Почта:</h6>
-                            <p>{{user.email}}</p>
-                              <h6>Статус:</h6>
-                            <p>
-                        {% if user.is_entity %}Юр. Лицо{% else %}Физ. лицо{% endif %}
-                            </p>
-                        </div>
-                        {% if user.profile.avatar_url %}<img alt="" src="{{user.profile.avatar_url}}" style="float:left;width: 180px; height: 180px;margin-top:0px;" class="userLogo"> {% endif %}
-                        <div class="col-md-6" style="margin-top:10x;border-top: 1px solid rgb(222, 226, 230);">
-                        <h6 style="margin-top:10px;">Заказы:</h6>
-                        {% for task in user.task_author.all %}
-                        <p> Название : {{  task  }}</p>
-                        <p> Срок : {{  task.deadline  }}</p>
-                        <a href="{{ task.get_absolute_url }}"> Перейти </a>
-                        <p style="border-bottom:1px solid rgb(222, 226, 230);"></p>
-                        {% empty %}{% endfor %}
-                            
-                        </div>
 
-                        <div class="col-md-6" style="margin-top:10x;border-top: 1px solid rgb(222, 226, 230);">
-                        <h6 style="margin-top:10px;">Команды:</h6>
-                        {% for squad in user.user_squads.all %}
-                        <!--Выввод-->
-                        <p> Название : {{  squad  }}</p>
-                        <a href="{{ squad.get_absolute_url }}"> Перейти </a>
-                        
-                        {% empty %}
-                        <p>вы не состоите в команде</p>
-                        {% endfor %}
-                            
-                        </div>
-                       
-                    </div>
-                    
-                    <!--/row-->
-                </div>
-                
-                </div>
+            <div class="row">
+
+
+          <div class="col">
+
+             {% if user.profile.avatar_url %}<img alt="" src="{{user.profile.avatar_url}}" style="float:left;width: 180px; height: 180px;margin-top:30px;" class="userLogo"> {% endif %}
+          
+          </div>
+
+            <div class="col">
+
+              <div class="list-group" style="margin-top:20px;">
+              <h3>{{user.display_name}}</h3>
+              <br>
+              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
+              <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">ФИО:</h5>
+              </div>
+              <p class="mb-1"> {{user.last_name}} {{user.first_name}}</p>
+              </a>
+              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+              <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">Почта:</h5>
+              </div>
+              <p class="mb-1">{{user.email}}</p>
+              </a>
+              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+              <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">Статус:</h5>
+              </div>
+              <p class="mb-1">{% if user.is_entity %}Юр. Лицо{% else %}Физ. лицо{% endif %}</p>
+              </a>
+            </div>
+          </div>
+          <!---->
+                    <div class="col">
+
+              <div class="list-group" style="margin-top:20px;">
+              <h3>Последние заказы</h3>
+              <br>
+
+              {% for task in user.task_author.all %}
+                  <a href="{{ task.get_absolute_url }}" class="list-group-item list-group-item-action flex-column align-items-start ">
+                  <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">Название : {{  task  }}</h5>
+                  </div>
+                  <p class="mb-1">Срок : {{  task.deadline  }}</p>
+                  </a>
+                  {% empty %}{% endfor %}
+            </div>
+          </div>
+<!---->
+          </div>
+          
+          
+      </div>
+<hr>
+
                 
             </div>           
         </div>      
     </div>   
 </div>
-<hr>
 
 
   <!--
