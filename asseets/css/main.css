@@ -2,21 +2,56 @@
 -------------------------------------------------- */
 /* standarts */
 
+* {
+	margin: 0;
+	padding: 0;
+}
+
 body{
     font-family: 'Open Sans', sans-serif;
+    background-color:rgb(48, 46, 56);
   }
   
-  h3 {
-    font-size: 24px;
-    font-weight: 400;
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-  
-  h2 {
-    font-weight: 700;
-    margin-bottom: 30px;
-  }
+/* navbar*/
+
+#nav_bar_auth{
+    height: 80px;
+
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+
+    border-radius: 0 0 15px 15px;
+    width: 100%;
+    margin: auto;
+}
+
+#nav_bar_auth a, h1, h2, h3, h4, h5, h6, p {
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: normal;
+    text-decoration: none!important;
+    color:black;
+}
+.dropdown{
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: normal;
+    text-decoration: none!important;
+    color:black;    
+}
+#name_auth {
+    font-size: xx-large;
+}
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
 
 .indexBody{
     background-color: white;
@@ -132,20 +167,6 @@ body{
 }
 
 /* footer */
-.footListElement{
-    text-decoration: none;
-    display: inline;
-    margin-right: 20px;
-}
-.footList{
-    text-align: center;
-}
-
-.footListElement > a {
-    color:grey;
-    text-decoration: none;
-}
-
 .partners__list{
 
 }
@@ -230,4 +251,14 @@ button:hover > .button__link{
     list-style-type: none;
     font-size: 20px;
     font-family: 'Rubik', sans-serif;
+}
+
+
+#footer { 
+    height: 50px; 
+    background: #f7f7f7; 
+    position: block; 
+    margin-top:20%;
+    bottom: 0; 
+    width: 100%; 
 }

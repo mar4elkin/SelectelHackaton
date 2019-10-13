@@ -4,19 +4,35 @@
 <link rel="stylesheet" href='{% static "css/userPage.css" %}'>
 {% endblock app_css %}
 {% block app_css2 %}
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap" rel="stylesheet">
 <link rel="stylesheet" media="screen" href='{% static "css/main.css" %}'>
 {% endblock app_css2 %}
 
 
-<nav class="navbar navbar-light bg-light justify-content-between">
-  <a class="navbar-brand" href="{% url 'landing_index' %}">OrderHunter</a>
-<div class="dropdown dropleft">
-   {% if user.profile.avatar_url %}<img id="dropdownMenuButton" data-toggle="dropdown" alt="" src="{{user.profile.avatar_url}}" style="float:left;width: 40px; height: 40px;margin-top:0px;margin-right:0px;" class="userLogo"> {% else %}<a id="dropdownMenuButton" data-toggle="dropdown" href="">Профиль</a> {% endif %}
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="{% url 'landing_index' %}">Главная</a>
-    <a class="dropdown-item" href="{% url 'user_home' %}"><i class="fa fa-cog"></i> Профиль</a>
-    {% if user.is_staff %} <a class="dropdown-item" href="/admin"><i class="fa fa-user" aria-hidden="true"></i> Админ панель</a> {% endif %}
-    <a class="dropdown-item" href="{% url 'account_logout' %}"><i class="fa fa-sign-out"></i>{% trans "Sign Out" %}</a>
+
+<nav id="nav_bar_auth" class="navbar navbar-expand-lg navbar-light bg-light">
+  <a id="name_auth" class="navbar-brand" href="{% url 'landing_index' %}">OrderHunter</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'user_home' %}"><i class="fa fa-cog"></i>Профиль</a>
+      </li>
+
+      <li class="nav-item">
+        {% if user.is_staff %} <a class="nav-link" href="/admin"><i class="fa fa-user" aria-hidden="true"></i> Админ панель</a> {% endif %}
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'account_logout' %}"><i class="fa fa-sign-out"></i>{% trans "Sign Out" %}</a>
+      </li>
+    </ul>
+
+   {% if user.profile.avatar_url %}<img  alt="" src="{{user.profile.avatar_url}}" style="float:left;width: 40px; height: 40px;margin-top:0px;margin-right:0px;" class="userLogo"> {% else %}<a href=""><img style="float:left;width: 40px; height: 40px;margin-top:0px;margin-right:0px;" src="https://www.stickpng.com/assets/images/588a64e7d06f6719692a2d11.png"></a> {% endif %}
+ 
   </div>
-</div>
 </nav>
+
