@@ -44,7 +44,7 @@
           <div class="col">
 
              {% if user.profile.avatar_url %}<img alt="" src="{{user.profile.avatar_url}}" style="float:left;width: 180px; height: 180px;margin-top:30px;" class="userLogo"> {% else %}
-             <img alt="" src="https://www.stickpng.com/assets/images/585e4bf3cb11b227491c339a.png" style="float:left;width: 180px; height: 180px;margin-top:30px;margin-right:20px;" class="userLogo> {% endif %}
+             <img alt="" src="https://www.stickpng.com/assets/images/585e4bf3cb11b227491c339a.png" style="float:left;width: 180px; height: 180px;margin-top:30px;margin-right:20px;" class="userLogo"> {% endif %}
           
           </div>
 
@@ -90,6 +90,7 @@
                   <a href="{{ task.get_absolute_url }}" class="list-group-item list-group-item-action flex-column align-items-start ">
                   <div class="d-flex w-100 justify-content-between">
                   <h5 class="mb-1">Название : {{  task  }}</h5>
+                  <h5 class="mb-1">Статус:{{task.get_status_display}}</h5>
                   </div>
                   <p class="mb-1">Срок : {{  task.deadline  }}</p>
                   </a>
@@ -107,10 +108,10 @@
               <h3>Команды</h3>
               <br>
 
-              {% for task in user.task_author.all %}
+              {% for squad in user.user_squads.all %}
                   <a href="{{ squad.get_absolute_url }}" class="list-group-item list-group-item-action flex-column align-items-start ">
                   <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">Название : {{  squad  }}</h5>
+                  <h5 class="mb-1">Название : {{  squad.description  }}</h5>
                   </div>
                   </a>
                   {% empty %}
