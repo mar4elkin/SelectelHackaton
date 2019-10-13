@@ -47,8 +47,8 @@
   {% block content %}{% endblock %}
   </main>
 {% endblock main_content %}
+{% block footer %}
 
-{% if user.is_authenticated %}
 <footer class="footer page-footer font-small">
     
   <div class="container-fluid">
@@ -70,23 +70,10 @@
     </ul>
   </div>
 </footer>
-{% else %}
 
-
-{% block footer %}
-  <footer class="footer page-footer font-small">
-    <div class="container-fluid">
-      <span class="text-muted text-white">
-        {% include "copyright.html" %}
-        <a class="pull-right" href="{% url 'website_contact' %}">Контакты</a>
-      </span>
-    </div>
-  </footer>
 {% endblock footer%}
-{% endif %}
 
 {% block tail_js %}{% endblock %}
-
 </body>
 </html>
 
